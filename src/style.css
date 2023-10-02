@@ -1,4 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
 body {
     background: url(wall.jpeg) no-repeat center center fixed;
     background-size: cover;
+}
+.header {
+    color: black;
+    font-family: 'Comfortaa', cursive;
+    font-size: xx-large;
+    font-weight: 900;
+    text-align: center;
+
 }
