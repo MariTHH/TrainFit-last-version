@@ -9,5 +9,32 @@ body {
     font-size: xx-large;
     font-weight: 900;
     text-align: center;
+}
+#app-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
 
+.app {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.app:hover {
+    background: lightskyblue;
+    transition: all 0.2s ease;
+}
+
+.app a {
+    color: black;
+    transition: all 0.2s ease;
+    font-size: 20px;
+    cursor: pointer;
 }
