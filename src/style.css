@@ -2,13 +2,18 @@
 body {
     background: url(wall.jpeg) no-repeat center center fixed;
     background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
 }
 .header {
-    color: black;
+    color: white;
     font-family: 'Comfortaa', cursive;
     font-size: xx-large;
     font-weight: 900;
     text-align: center;
+    padding: 10px 16px;
+    line-height: 55px;
+    margin: 20px 0 30px 0;
 }
 #app-list {
     display: flex;
@@ -25,16 +30,44 @@ body {
     margin-bottom: 5px;
     transition: all 0.2s ease;
     cursor: pointer;
+    margin-top: 80px;
+    font-size: 4vw;
+    line-height: 4.5vw;
 }
 
 .app:hover {
-    background: lightskyblue;
+    background: cornflowerblue;
     transition: all 0.2s ease;
 }
 
 .app a {
-    color: black;
+    color: white;
     transition: all 0.2s ease;
     font-size: 20px;
     cursor: pointer;
 }
+
+
+.content {
+    display: flex;
+    overflow: hidden;
+    width: 40%;
+    height: 100vh;
+    margin-top: 80px;
+    padding: 50px 90px;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+span{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 55px;
+    margin: 20px 0 30px 0;
+    color: royalblue;
+}
+
+
