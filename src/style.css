@@ -3,7 +3,6 @@ body {
     background: url(wall.jpeg) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
     overflow: hidden;
 }
 .header {
@@ -77,13 +76,6 @@ body {
 }
 
 
-.content-text {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-}
-
-
 .button-container{
     right: 10px;
     display: flex;
@@ -116,4 +108,26 @@ a.my-button{
 }
 a.my-button:hover {
     background-color: royalblue;
+}
+
+img{
+    animation: show 1s;
+    left: 880px;
+    display: flex;
+    width: 30%;
+    height: 80vh;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    border-radius: 10px;
+    border: 5px cornflowerblue solid;
+    box-shadow: 0 0 10px #444;
+}
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
