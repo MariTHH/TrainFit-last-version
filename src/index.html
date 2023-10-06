@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <!--    connection to css-->
+    <link rel="icon" type="image" href="image/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
     <title>Train Fit</title>
 </head>
-<body background="wall.jpeg">
+<body background="image/wall.jpeg">
+<script src="js/script.js"></script>
+<script type = "module" src="js/jquery-3.7.1.js"></script>
 <header class="header">
     <div>
         Train Fit
     </div>
 </header>
-<div class="right-content" id="original-content" >
-        <img id = "image" src="sport.jpeg" alt=" " style="display:none;">
-        <img id = "image_second" src="un.jpeg" alt=" " style="display:none;">
-        <img id = "image_third" src="ood.jpeg" alt=" " style="display:none;">
+<div class="right-content" id="original-content">
+    <img id="image" src="image/sport.jpeg" alt=" " style="display:none;">
+    <img id="image_second" src="image/un.jpeg" alt=" " style="display:none;">
+    <img id="image_third" src="image/ood.jpeg" alt=" " style="display:none;">
 </div>
 <div class="button-container">
-    <a class="my-button" href="#"><span></span>log in</a>
+    <a class="my-button" href="#" ><span></span>log in</a>
     <a class="my-button" href="#"><span></span>register</a>
 </div>
 <div class="content">
@@ -29,7 +30,7 @@
         <span>Easy to be fit</span>
     </div>
     <div id="app-list">
-        <div class="app active" data-page="original-content" tabindex="0" onclick="myFunc()" >
+        <div class="app active" data-page="original-content" tabindex="0" onclick="myFunc()">
             <a>Упражнения для каждой группы мышц</a>
         </div>
         <div class="app steps " data-page="hiit-content" tabindex="0" onclick="ingFunc()">
@@ -38,23 +39,7 @@
             <a>Подсчёт калорий</a></div>
     </div>
 </div>
-<script language="javascript">
-    function myFunc() {
-        document.getElementById('image').style.display='block';
-        document.getElementById('image_second').style.display='none';
-        document.getElementById('image_third').style.display='none';
-    }
-    function ingFunc(){
-        document.getElementById('image_second').style.display='block';
-        document.getElementById('image').style.display='none';
-        document.getElementById('image_third').style.display='none';
-    }
-    function iFunc(){
-        document.getElementById('image_third').style.display='block';
-        document.getElementById('image').style.display='none';
-        document.getElementById('image_second').style.display='none';
-    }
-</script>
+
 </body>
 
 </html>

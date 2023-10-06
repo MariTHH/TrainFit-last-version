@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
+
 body {
-    background: url(wall.jpeg) no-repeat center center fixed;
+    background: url(../image/wall.jpeg) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
+
 .header {
     font-family: 'Montserrat', sans-serif;
     font-size: xx-large;
@@ -16,6 +18,7 @@ body {
     text-transform: uppercase;
     color: #fefefe;
 }
+
 #app-list {
     display: flex;
     flex-direction: column;
@@ -49,7 +52,6 @@ body {
 }
 
 
-
 .content {
     display: flex;
     width: 40%;
@@ -62,7 +64,7 @@ body {
     font-weight: 900;
 }
 
-.titlehero{
+.titlehero {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 56px;
@@ -76,7 +78,7 @@ body {
 }
 
 
-.button-container{
+.button-container {
     right: 10px;
     display: flex;
     width: 30%;
@@ -87,30 +89,32 @@ body {
     font-family: 'Comfortaa', cursive;
     position: absolute;
 }
-a.my-button{
+
+a.my-button {
     transition-duration: 0.4s;
     background-color: cornflowerblue;
-     color: white;
-     font-family: 'Montserrat', sans-serif;
-     font-size: 31px;
-     font-weight: 800;
-     font-style: normal;
-     text-decoration: none;
-     padding: 7px 20px;
-     margin: 30px;
-     border-radius: 25px;
-     display: inline-flex;
-     justify-content: center;
-     align-items: center;
-     box-shadow: 0px 8px 25px 0px lightskyblue;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 31px;
+    font-weight: 800;
+    font-style: normal;
+    text-decoration: none;
+    padding: 7px 20px;
+    margin: 30px;
+    border-radius: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 8px 25px 0px lightskyblue;
 
 
 }
+
 a.my-button:hover {
     background-color: royalblue;
 }
 
-img{
+img {
     animation: show 1s;
     left: 880px;
     display: flex;
@@ -123,6 +127,7 @@ img{
     border: 5px cornflowerblue solid;
     box-shadow: 0 0 10px #444;
 }
+
 @keyframes show {
     from {
         opacity: 0;
@@ -131,3 +136,4 @@ img{
         opacity: 1;
     }
 }
+
