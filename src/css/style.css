@@ -79,12 +79,11 @@ body {
 
 
 .button-container {
-    right: 10px;
+    right: 100px;
     display: flex;
     width: 30%;
     height: 15vh;
-    margin-top: 200px;
-    padding: 50px 90px;
+    margin-top: 280px;
     color: white;
     font-family: 'Comfortaa', cursive;
     position: absolute;
@@ -135,5 +134,40 @@ img {
     to {
         opacity: 1;
     }
+}
+#input-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+}
+.small-text{
+    background: cornflowerblue;
+    margin-top: 160px;
+    right: 115px;
+    font-size: 25px;
+    font-weight: 800;
+    font-style: normal;
+    text-decoration: none;
+    padding: 7px 20px;
+    display: flex;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+}
+#login-password-form{
+    right: 160px;
+    margin-top: 180px;
+    display: flex;
+    height: 15vh;
+    padding: 50px 90px;
+    color: white;
+    position: absolute;
+}
+.input-text{
+    font-size: 15px;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 300;
+    flex-direction: column;
 }
 
