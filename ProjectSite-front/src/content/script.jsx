@@ -43,6 +43,7 @@ function Content() {
                         <a>Подсчёт калорий</a></div>
                 </div>
             </div>
+
         </AppContainer>
     );
 }

@@ -109,8 +109,8 @@ function LogIn() {
                 </div>
             </form>
             <div className="button-container">
-                <button className="my-button" onClick={logInRequest}><span></span>log in</button>
-                <button className="my-button" onClick={signUpRequest}><span></span>register</button>
+                <a className="my-button" onClick={logInRequest}><span></span>log in</a>
+                <a className="my-button" onClick={signUpRequest}><span></span>register</a>
             </div>
         </AppContainer>
     );

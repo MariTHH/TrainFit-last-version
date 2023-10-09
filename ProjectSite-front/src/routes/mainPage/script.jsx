@@ -9,9 +9,9 @@ function MainPage() {
 
     return (
         <AppBody>
-            <Header/>
             <Content/>
             <LogIn/>
+            <Header/>
             <Toaster
                 position="bottom-right"
                 reverseOrder={false}

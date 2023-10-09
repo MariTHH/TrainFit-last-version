@@ -1,5 +1,5 @@
 import AppContainer from "../components/AppContainer/script";
-
+import 'css/style.css';
 
 function Header(){
     return (
