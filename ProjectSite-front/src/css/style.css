@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
 
 body {
-    background: url(../image/wall.jpeg) no-repeat center center fixed;
+    background: url(../../public/wall.jpeg) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
@@ -89,7 +89,7 @@ body {
     position: absolute;
 }
 
-a.my-button {
+button.my-button {
     transition-duration: 0.4s;
     background-color: cornflowerblue;
     color: white;
@@ -109,7 +109,7 @@ a.my-button {
 
 }
 
-a.my-button:hover {
+button.my-button:hover {
     background-color: royalblue;
 }
 
