@@ -1,16 +1,21 @@
-import AppContainer from "../components/AppContainer/script";
+import AppContainer from "../components/appContainer/script";
 import 'css/style.css';
 import {useState} from "react";
 import sport from "content/sport.jpeg";
 import ood from "content/ood.jpeg";
 import un from "content/un.jpeg";
 
-function Content() {
+// <Content onClick={} onHover={} onSmth={} handleSmth doSmth ... ></Content>
+function Content({onClick}) {
     const [imageClicked, setImageClicked] = useState({
         first: false,
         second: false,
         ground: false
     });
+
+    const handleMouseClick = (order) => {
+        onClickHandler(order);
+    }
     const onClickHandler = (order) => {
         const resetImages = {
             first: false,
@@ -34,12 +39,12 @@ function Content() {
                     <span>Easy to be fit</span>
                 </div>
                 <div id="app-list">
-                    <div className="app active" data-page="original-content" tabIndex="0" onClick={() => onClickHandler("ground")} >
+                    <div className="app active" data-page="original-content" tabIndex="0" onClick={() => handleMouseClick("ground")} >
                         <a>Упражнения для каждой группы мышц</a>
                     </div>
-                    <div className="app steps " data-page="hiit-content" tabIndex="0" onClick={() => onClickHandler("first")} >
+                    <div className="app steps " data-page="hiit-content" tabIndex="0" onClick={() => handleMouseClick("first")} >
                         <a>Трекинг шагов</a></div>
-                    <div className="app calories " data-page="calories-content" tabIndex="0" onClick={() => onClickHandler("second")} >
+                    <div className="app calories " data-page="calories-content" tabIndex="0" onClick={() => handleMouseClick("second")} >
                         <a>Подсчёт калорий</a></div>
                 </div>
             </div>

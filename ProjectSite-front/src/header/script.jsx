@@ -1,4 +1,4 @@
-import AppContainer from "../components/AppContainer/script";
+import AppContainer from "../components/appContainer/script";
 import 'css/style.css';
 
 function Header(){

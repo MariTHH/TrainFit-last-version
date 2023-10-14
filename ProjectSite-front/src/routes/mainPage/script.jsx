@@ -1,6 +1,6 @@
 import {Toaster} from "react-hot-toast";
 import Header from "../../header/script";
-import AppBody from "../../components/AppBody/script";
+import AppBody from "../../components/appBody/script";
 import LogIn from "../../login/script";
 import Content from "../../content/script";
 

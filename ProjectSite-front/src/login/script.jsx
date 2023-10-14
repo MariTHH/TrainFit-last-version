@@ -1,17 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import toast from "react-hot-toast";
-import {useDispatch} from "react-redux";
-// import {setLogin} from "../../../redux/login";
-// import {setPassword} from "../../../redux/password";
-import AppContainer from "../components/AppContainer/script";
-import {setLogin} from "../redux/login";
-import {setPassword} from "../redux/password";
+import AppContainer from "../components/appContainer/script";
 import 'css/style.css';
+import store from "../store";
 
 function LogIn() {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -69,8 +65,9 @@ function LogIn() {
                 headers: {"Authorization": "Basic " + btoa(newLogin + ":" + newPassword).replaceAll("=", "")}
             }).then(response => {
                 if (checkResponse(response)) {
-                    dispatch(setLogin(newLogin));
-                    dispatch(setPassword(newPassword));
+                    store.setLogin(store.login);
+                    store.setPassword(store.password);
+
                 }
             })
         }
@@ -86,8 +83,9 @@ function LogIn() {
                 body: formData
             }).then(response => {
                 if (checkResponse(response)) {
-                    dispatch(setLogin(newLogin));
-                    dispatch(setPassword(newPassword));
+                    store.setLogin(store.login);
+                    store.setPassword(store.password);
+
                 }
             })
 

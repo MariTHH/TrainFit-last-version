@@ -1,10 +1,22 @@
-import loginReducer from "./redux/login";
-import passwordReducer from "./redux/password";
-import {configureStore} from "@reduxjs/toolkit";
+import { makeAutoObservable } from "mobx";
 
-export default configureStore({
-    reducer: {
-        login: loginReducer,
-        password: passwordReducer
-    },
-})
+class Store {
+    login = "";
+    password = "";
+
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    setLogin(login) {
+        this.login = login;
+    }
+
+    setPassword(password) {
+        this.password = password;
+    }
+}
+
+const store = new Store();
+
+export default store;
