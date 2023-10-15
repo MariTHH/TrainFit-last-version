@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import toast from "react-hot-toast";
 import AppContainer from "../components/appContainer/script";
-import 'css/style.css';
+import './style.css';
 import store from "../store";
 
 function LogIn() {

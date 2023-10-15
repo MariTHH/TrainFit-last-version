@@ -1,12 +1,12 @@
 import AppContainer from "../components/appContainer/script";
-import 'css/style.css';
+import './style.css';
 import {useState} from "react";
 import sport from "content/sport.jpeg";
 import ood from "content/ood.jpeg";
 import un from "content/un.jpeg";
 
 // <Content onClick={} onHover={} onSmth={} handleSmth doSmth ... ></Content>
-function Content({onClick}) {
+function Content() {
     const [imageClicked, setImageClicked] = useState({
         first: false,
         second: false,
