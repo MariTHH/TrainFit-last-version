@@ -67,7 +67,7 @@ function LogIn() {
                 if (checkResponse(response)) {
                     store.setLogin(store.login);
                     store.setPassword(store.password);
-
+                    navigate("/profilepage");
                 }
             })
         }
@@ -85,7 +85,7 @@ function LogIn() {
                 if (checkResponse(response)) {
                     store.setLogin(store.login);
                     store.setPassword(store.password);
-
+                    navigate("/profilepage");
                 }
             })
 

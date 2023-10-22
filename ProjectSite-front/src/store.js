@@ -15,6 +15,9 @@ class Store {
     setPassword(password) {
         this.password = password;
     }
+    getLogin(){
+        return this.login;
+    }
 }
 
 const store = new Store();

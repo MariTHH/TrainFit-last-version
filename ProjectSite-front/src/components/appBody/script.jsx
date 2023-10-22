@@ -1,6 +1,6 @@
 function AppBody(props) {
     return (
-        <div className="content">
+        <div className="content1">
             {props.children}
         </div>
     );
