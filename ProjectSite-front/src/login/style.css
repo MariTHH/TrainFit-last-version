@@ -3,7 +3,7 @@
     display: flex;
     width: 30%;
     height: 15vh;
-    margin-top: 280px;
+    margin-top: 100px;
     color: white;
     font-family: 'Comfortaa', cursive;
     position: absolute;
@@ -41,7 +41,7 @@ a.my-button:hover {
 }
 .small-text{
     background: cornflowerblue;
-    margin-top: 160px;
+    margin-top: -60px;
     right: 115px;
     font-size: 25px;
     font-weight: 800;
@@ -55,7 +55,7 @@ a.my-button:hover {
 }
 #login-password-form{
     right: 160px;
-    margin-top: 180px;
+    margin-top: -20px;
     display: flex;
     height: 15vh;
     padding: 50px 90px;

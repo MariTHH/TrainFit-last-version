@@ -37,11 +37,14 @@
     font-size: 4vw;
     line-height: 4.5vw;
     width: 150px;
+    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
 }
 
 .profile:hover,.shedule:hover {
     background: royalblue;
     transition: all 0.2s ease;
+    transform: translate(0,-3px);
+    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
 .profile a,.shedule a {
@@ -59,6 +62,7 @@
     margin: auto;
     margin-top: 120px;
     margin-left: 350px;
+    box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 
 }
 .shed{
@@ -69,6 +73,7 @@
     background: lightcyan;
     margin-top: -356px;
     margin-left: 900px;
+    box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
 .header1{
     font-family: 'Montserrat', sans-serif;
@@ -77,5 +82,5 @@
     text-transform: uppercase;
     color: #fefefe;
     margin-top: -1px;
-    background-color: cornflowerblue;
+    background-color: rgba(20, 122, 157, 0.39);
 }
