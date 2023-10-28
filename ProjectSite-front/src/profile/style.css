@@ -25,7 +25,7 @@
     top:290px;
 }
 
-.profile,.shedule {
+.profile,.shedule, .back-button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,18 +40,23 @@
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
 }
 
-.profile:hover,.shedule:hover {
+.profile:hover,.shedule:hover, .back-button:hover {
     background: royalblue;
     transition: all 0.2s ease;
     transform: translate(0,-3px);
     box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
-.profile a,.shedule a {
+.profile a,.shedule a, .back-button a {
     color: white;
     transition: all 0.2s ease;
     font-size: 20px;
     cursor: pointer;
+}
+.back-button{
+    padding: 6px;
+    width: 50px;
+    margin-top: -500px;
 }
 .graph{
     width: 450px;
@@ -83,4 +88,66 @@
     color: #fefefe;
     margin-top: -1px;
     background-color: rgba(20, 122, 157, 0.39);
+}
+
+.profileBox{
+    display: none;
+    width: 1000px;
+    height: 700px;
+    border: 3px solid cornflowerblue;
+    border-radius: 10%;
+    background: lightcyan;
+    margin: auto;
+    margin-top: -110px;
+    margin-left: 350px;
+    box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
+}
+.username,.weight{
+    font-size: 15px;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 300;
+    flex-direction: row;
+    top: 100px;
+    left: 100px;
+    margin: 70px;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    border-color: cornflowerblue;
+}
+.sex{
+    font-family: 'Comfortaa', cursive;
+    margin-left: 70px;
+}
+
+.save{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-size: 4vw;
+    line-height: 4.5vw;
+    width: 150px;
+    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+    background-color: cornflowerblue;
+    margin-top: 300px;
+    margin-left: 400px;
+}
+.save:hover{
+    background: royalblue;
+    transition: all 0.2s ease;
+    transform: translate(0,-3px);
+    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
+}
+
+.save a {
+    color: white;
+    transition: all 0.2s ease;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
 }
