@@ -12,23 +12,25 @@ function Profile() {
     const goBack = () => {
         window.history.back();
     }
-    // React.useEffect(() => {
-    //     window.history.pushState(null, null, window.location.href);
-    //     window.onpopstate = () => {
-    //         window.history.go(1);
-    //     };
-    // }, []);
+    React.useEffect(() => {
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = () => {
+            window.history.go(1);
+        };
+    }, []);
 
-    function viewDiv(){
-        document.getElementById("profileBox").style.display = "block";
+    function viewDiv(id){
+        view();
+        document.getElementById(id).style.display = "block";
     }
     function view(){
         document.getElementById("profileBox").style.display = "none";
+        document.getElementById("sheduleBox").style.display = "none";
     }
-    const handleMouseClick = () => {
-        viewDiv()
+    const handleMouseClick = (id) => {
+        viewDiv(id)
     }
-    const haa = () => {
+    const dropThis = () => {
         view()
     }
     return (
@@ -44,17 +46,20 @@ function Profile() {
                     <img className="user-info-avatar" src={img} alt="avatar"/>
                 </div>
                 <div className="list">
-                    <div className="profile" onClick={() => handleMouseClick()}>
+                    <div className="profile" onClick={() => handleMouseClick('profileBox')}>
                         <a>Профиль</a>
                     </div>
-                    <div className="shedule" onClick={() => haa()}>
+                    <div className="shedule" onClick={() => handleMouseClick('sheduleBox')}>
                         <a>Расписание</a>
+                    </div>
+                    <div className="progress" onClick={() => dropThis()}>
+                        <a>Прогресс</a>
                     </div>
                 </div>
             </div>
             <div className="graph"></div>
             <div className="shed"></div>
-            <div className="back-button" onClick={() => navigate(-1)}>
+            <div className="back-button" onClick={() => navigate('/')}>
                 <a>Back</a>
             </div>
 
@@ -74,6 +79,9 @@ function Profile() {
                 <div className="save">
                     <a>Save</a>
                 </div>
+
+            </div>
+            <div className="sheduleBox" id={"sheduleBox"}>
 
             </div>
         </AppContainer>

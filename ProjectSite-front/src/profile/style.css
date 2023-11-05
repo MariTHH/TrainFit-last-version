@@ -25,7 +25,7 @@
     top:290px;
 }
 
-.profile,.shedule, .back-button {
+.profile,.shedule, .back-button, .progress {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,14 +40,14 @@
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
 }
 
-.profile:hover,.shedule:hover, .back-button:hover {
+.profile:hover,.shedule:hover, .back-button:hover, .progress:hover {
     background: royalblue;
     transition: all 0.2s ease;
     transform: translate(0,-3px);
     box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
-.profile a,.shedule a, .back-button a {
+.profile a,.shedule a, .back-button a, .progress a {
     color: white;
     transition: all 0.2s ease;
     font-size: 20px;
@@ -90,7 +90,7 @@
     background-color: rgba(20, 122, 157, 0.39);
 }
 
-.profileBox{
+.profileBox, .sheduleBox{
     display: none;
     width: 1000px;
     height: 700px;
