@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import AppContainer from "../components/appContainer/script";
 import img from "../profile/img.png";
-import MainPage from "routes/mainPage/script";
 import {useNavigate} from "react-router-dom";
 
 import 'profile/style.css';
+import store from "../store";
 
-function Profile() {
+ function Profile() {
     const navigate = useNavigate();
+    const [weight, setWeight] = useState("");
+    const [sex, setSex] = useState("");
 
     const goBack = () => {
         window.history.back();
@@ -32,6 +34,18 @@ function Profile() {
     }
     const dropThis = () => {
         view()
+    }
+    function sendParams() {
+        // let paramsFormData = new FormData();
+
+        fetch("/api/params", {
+            method: "POST",
+            headers: {"Authorization": "Basic " + btoa( store.getLogin()+ ":" + store.password.value).replaceAll("=", "")},
+            // body: paramsFormData
+        }).then(response => {
+            console.log(store.login)
+            console.log(response);
+        })
     }
     return (
         <AppContainer>
@@ -65,18 +79,19 @@ function Profile() {
 
             <div className="profileBox" id={"profileBox"}>
                 <input className="username" type="text" placeholder="username"/>
-                <input className="weight" type="text" placeholder="weight"/>
+                <input className="weight" type="text" placeholder="weight" value={weight}
+                       onChange={e => setWeight(e.target.value)}/>
                 <div className="sex" id="r_select">
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="women"></input>
-                        <span>  Female </span>
+                        <input className="sex-radio" type="radio" name="sex_value" value="women" onChange={e => setSex(e.target.value)} checked={sex === ('women')}></input>
+                        <span> Female </span>
                     </label>
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="man"></input>
-                        <span>  Male </span>
+                        <input className="sex-radio" type="radio" name="sex_value" value="man" onChange={e => setSex(e.target.value)} checked={sex === ('man')}></input>
+                        <span> Male </span>
                     </label>
                 </div>
-                <div className="save">
+                <div className="save" onClick={sendParams}>
                     <a>Save</a>
                 </div>
 

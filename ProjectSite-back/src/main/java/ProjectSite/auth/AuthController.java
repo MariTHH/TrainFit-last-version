@@ -24,4 +24,9 @@ public class AuthController {
     public void login(@RequestHeader("Authorization") String authorization) {
         authService.check(authorization);
     }
+
+    @PostMapping("/api/params")
+    public void params(@RequestParam("login") String login) {
+        authService.addParams(login);
+    }
 }

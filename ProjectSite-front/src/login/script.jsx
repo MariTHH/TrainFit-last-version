@@ -66,6 +66,7 @@ function LogIn() {
             }).then(response => {
                 if (checkResponse(response)) {
                     store.setLogin(store.login);
+                    console.log(store.getLogin())
                     store.setPassword(store.password);
                     navigate("/profilepage");
                 }

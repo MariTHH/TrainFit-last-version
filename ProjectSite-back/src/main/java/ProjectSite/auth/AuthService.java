@@ -1,5 +1,6 @@
 package ProjectSite.auth;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,8 +22,14 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Login has been taken");
         }
 
-        User user = new User(login, getHash(password));
+        User user = new User(login, getHash(password),null,null);
         userRepository.save(user);
+    }
+
+    public void addParams(String login) {
+        if (userRepository.findByLogin(login) != null) {
+            deleteUserByLogin(login);
+        }
     }
 
     public String check(String authorization) {
@@ -71,4 +78,10 @@ public class AuthService {
             throw new RuntimeException(e);
         }
     }
+
+
+    public void deleteUserByLogin(String login) {
+        userRepository.deleteByLogin(login);
+    }
+
 }

@@ -14,12 +14,16 @@ public class User {
 
     private String login;
     private String passwordHash;
+    private String weight;
+    private String sex;
 
     public User() {}
 
-    public User(String login, String passwordHash) {
+    public User(String login, String passwordHash, String weight, String sex) {
         this.login = login;
         this.passwordHash = passwordHash;
+        this.weight = weight;
+        this.sex = sex;
     }
 
     public Long getId() {
@@ -28,6 +32,20 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getLogin() {

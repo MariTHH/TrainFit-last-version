@@ -1,12 +1,18 @@
 import AppContainer from "../components/appContainer/script";
 import './style.css';
-import {useState} from "react";
+import React, {useState} from "react";
 import sport from "content/sport.jpeg";
 import ood from "content/ood.jpeg";
 import un from "content/un.jpeg";
 
 // <Content onClick={} onHover={} onSmth={} handleSmth doSmth ... ></Content>
 function Content() {
+    React.useEffect(() => {
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = () => {
+            window.history.go(1);
+        };
+    }, []);
     const [imageClicked, setImageClicked] = useState({
         first: false,
         second: false,
