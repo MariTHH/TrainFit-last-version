@@ -6,10 +6,12 @@ import {useNavigate} from "react-router-dom";
 import 'profile/style.css';
 import store from "../store";
 
- function Profile() {
+function Profile() {
     const navigate = useNavigate();
+    const [username, setUsername] = useState("");
     const [weight, setWeight] = useState("");
     const [sex, setSex] = useState("");
+
 
     const goBack = () => {
         window.history.back();
@@ -21,23 +23,27 @@ import store from "../store";
         };
     }, []);
 
-    function viewDiv(id){
+    function viewDiv(id) {
         view();
         document.getElementById(id).style.display = "block";
     }
-    function view(){
+
+    function view() {
         document.getElementById("profileBox").style.display = "none";
         document.getElementById("sheduleBox").style.display = "none";
     }
+
     const handleMouseClick = (id) => {
         viewDiv(id)
     }
     const dropThis = () => {
         view()
     }
+
     function sendParams() {
         let formData = new FormData();
         formData.append('login', store.getLogin());
+        formData.append('username', username);
         formData.append('weight', weight);
         formData.append('sex', sex);
 
@@ -45,9 +51,10 @@ import store from "../store";
             method: "POST",
             body: formData
         }).then(response => {
-            console.log(weight,sex)
+            console.log(weight, sex)
         })
     }
+
     return (
         <AppContainer>
             <div className="header1">
@@ -79,16 +86,19 @@ import store from "../store";
             </div>
 
             <div className="profileBox" id={"profileBox"}>
-                <input className="username" type="text" placeholder="username"/>
+                <input className="username" type="text" placeholder="username" value={username}
+                       onChange={e => setUsername(e.target.value)}/>
                 <input className="weight" type="text" placeholder="weight" value={weight}
                        onChange={e => setWeight(e.target.value)}/>
                 <div className="sex" id="r_select">
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="women" onChange={e => setSex(e.target.value)} checked={sex === ('women')}></input>
+                        <input className="sex-radio" type="radio" name="sex_value" value="women"
+                               onChange={e => setSex(e.target.value)} checked={sex === ('women')}></input>
                         <span> Female </span>
                     </label>
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="man" onChange={e => setSex(e.target.value)} checked={sex === ('man')}></input>
+                        <input className="sex-radio" type="radio" name="sex_value" value="man"
+                               onChange={e => setSex(e.target.value)} checked={sex === ('man')}></input>
                         <span> Male </span>
                     </label>
                 </div>

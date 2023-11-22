@@ -26,10 +26,18 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    public void addParams(String login, String sex,String weight) {
+    public void addParams(String login, String username, String sex, String weight) {
         User user = userRepository.findByLogin(login);
-        user.setSex(sex);
-        user.setWeight(weight);
+        System.out.println(username);
+        if (!username.equals("")) {
+            user.setLogin(username);
+        }
+        if (!sex.equals("")) {
+            user.setSex(sex);
+        }
+        if (!weight.equals("")) {
+            user.setWeight(weight);
+        }
         userRepository.save(user);
 
     }
