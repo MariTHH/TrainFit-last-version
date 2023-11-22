@@ -26,7 +26,7 @@ public class AuthController {
     }
 
     @PostMapping("/api/params")
-    public void params(@RequestParam("login") String login) {
-        authService.addParams(login);
+    public void params(@RequestParam("login") String login, @RequestParam("sex") String sex, @RequestParam("weight") String weight) {
+        authService.addParams(login, sex, weight);
     }
 }

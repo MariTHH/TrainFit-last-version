@@ -36,14 +36,16 @@ import store from "../store";
         view()
     }
     function sendParams() {
-        // let paramsFormData = new FormData();
+        let formData = new FormData();
+        formData.append('login', store.getLogin());
+        formData.append('weight', weight);
+        formData.append('sex', sex);
 
         fetch("/api/params", {
             method: "POST",
-            headers: {"Authorization": "Basic " + btoa( store.getLogin()+ ":" + store.getPassword()).replaceAll("=", "")},
-            // body: paramsFormData
+            body: formData
         }).then(response => {
-            console.log(store.getLogin())
+            console.log(weight,sex)
         })
     }
     return (

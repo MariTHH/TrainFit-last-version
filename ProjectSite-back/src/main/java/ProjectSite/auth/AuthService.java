@@ -22,14 +22,16 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Login has been taken");
         }
 
-        User user = new User(login, getHash(password),null,null);
+        User user = new User(login, getHash(password), null, null);
         userRepository.save(user);
     }
 
-    public void addParams(String login) {
-        if (userRepository.findByLogin(login) != null) {
-            deleteUserByLogin(login);
-        }
+    public void addParams(String login, String sex,String weight) {
+        User user = userRepository.findByLogin(login);
+        user.setSex(sex);
+        user.setWeight(weight);
+        userRepository.save(user);
+
     }
 
     public String check(String authorization) {
