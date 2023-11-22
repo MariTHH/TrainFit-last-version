@@ -40,11 +40,10 @@ import store from "../store";
 
         fetch("/api/params", {
             method: "POST",
-            headers: {"Authorization": "Basic " + btoa( store.getLogin()+ ":" + store.password.value).replaceAll("=", "")},
+            headers: {"Authorization": "Basic " + btoa( store.getLogin()+ ":" + store.getPassword()).replaceAll("=", "")},
             // body: paramsFormData
         }).then(response => {
-            console.log(store.login)
-            console.log(response);
+            console.log(store.getLogin())
         })
     }
     return (

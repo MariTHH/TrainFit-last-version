@@ -1,25 +1,30 @@
-import { makeAutoObservable } from "mobx";
+import {makeAutoObservable, computed, observable} from "mobx";
+import { createContext, useContext } from "react";
 
 class Store {
-    login = "";
-    password = "";
+    login ;
+    password;
 
     constructor() {
-        makeAutoObservable(this);
+        makeAutoObservable(this, {}, { autoBind: true });
     }
 
-    setLogin(login) {
+     setLogin(login) {
         this.login = login;
     }
-
     setPassword(password) {
         this.password = password;
     }
-    getLogin(){
+     getLogin(){
         return this.login;
+    }
+     getPassword(){
+        return this.password;
     }
 }
 
 const store = new Store();
+
+
 
 export default store;

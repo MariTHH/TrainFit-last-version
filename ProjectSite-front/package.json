@@ -19,7 +19,11 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/node-fetch": "^2.6.6",
     "eslint": "^8.51.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.0",
+    "@babel/preset-env": "^7.1.0"
   },
   "scripts": {
     "start": "PORT=8080 react-scripts start",
@@ -44,5 +48,8 @@
       "localhost",
       ".localhost"
     ]
-  }
+  },
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+  ]
 }

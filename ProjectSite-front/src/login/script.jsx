@@ -65,9 +65,8 @@ function LogIn() {
                 headers: {"Authorization": "Basic " + btoa(newLogin + ":" + newPassword).replaceAll("=", "")}
             }).then(response => {
                 if (checkResponse(response)) {
-                    store.setLogin(store.login);
-                    console.log(store.getLogin())
-                    store.setPassword(store.password);
+                    store.setLogin(newLogin);
+                    store.setPassword(newPassword);
                     navigate("/profilepage");
                 }
             })
@@ -84,8 +83,8 @@ function LogIn() {
                 body: formData
             }).then(response => {
                 if (checkResponse(response)) {
-                    store.setLogin(store.login);
-                    store.setPassword(store.password);
+                    store.setLogin(newLogin);
+                    store.setPassword(newPassword);
                     navigate("/profilepage");
                 }
             })
