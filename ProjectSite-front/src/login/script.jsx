@@ -87,6 +87,7 @@ function LogIn() {
                 if (checkResponse(response)) {
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
+                    localStorage.setItem("login", store.getLogin())
                     navigate("/profilepage");
                 }
             })
