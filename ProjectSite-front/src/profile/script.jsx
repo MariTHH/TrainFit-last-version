@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from "../components/appContainer/script";
 import img from "../profile/img.png";
 import {useNavigate} from "react-router-dom";
 
 import 'profile/style.css';
 import store from "../store";
+import localStorage from "mobx-localstorage";
 
 function Profile() {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    let [username, setUsername] = useState("");
     const [weight, setWeight] = useState("");
     const [sex, setSex] = useState("");
-
 
     const goBack = () => {
         window.history.back();
@@ -51,7 +51,7 @@ function Profile() {
             method: "POST",
             body: formData
         }).then(response => {
-            console.log(weight, sex)
+            console.log(store.getLogin())
         })
     }
 
@@ -86,7 +86,7 @@ function Profile() {
             </div>
 
             <div className="profileBox" id={"profileBox"}>
-                <input className="username" type="text" placeholder="username" value={username}
+                <input className="username" id={"username"} type="text" placeholder="username" value={username}
                        onChange={e => setUsername(e.target.value)}/>
                 <input className="weight" type="text" placeholder="weight" value={weight}
                        onChange={e => setWeight(e.target.value)}/>

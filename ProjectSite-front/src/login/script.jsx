@@ -1,9 +1,10 @@
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import AppContainer from "../components/appContainer/script";
 import './style.css';
 import store from "../store";
+import localStorage from "mobx-localstorage";
 
 function LogIn() {
     const navigate = useNavigate();
@@ -67,6 +68,7 @@ function LogIn() {
                 if (checkResponse(response)) {
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
+                    localStorage.setItem("login", store.getLogin())
                     navigate("/profilepage");
                 }
             })
