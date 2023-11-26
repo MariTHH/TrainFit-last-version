@@ -1,3 +1,4 @@
+import '../appSchedule/style.css';
 function AppBody(props) {
     return (
         <div className="content1">

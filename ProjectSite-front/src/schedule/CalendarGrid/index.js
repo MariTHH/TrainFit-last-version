@@ -9,8 +9,8 @@ const GridWrapper = styled.div`
 	background-color: #E5E5E5;
 `;
 const CellWrapper = styled.div`
-	min-width: 140px;
-	min-height: 80px;
+	min-width: 200px;
+	min-height: 100px;
 	background-color: #FFFFFF;
 	background-color: ${props => props.isWeekend ? '#F5F5F5' : '#FFFFFF'};
 `;
@@ -28,7 +28,7 @@ const DayWrapper = styled.div`
 	cursor: pointer;
 `
 const CalendarGrid = ({startDay}) => {
-    const day = startDay.clone();
+    const day = startDay.clone().subtract(1,"day");
     const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
     return (
         <GridWrapper>
