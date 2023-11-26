@@ -13,21 +13,21 @@ import store from "./store";
 
 
 const router = createBrowserRouter(
-    [
-        {
-            path: "/",
-            element: <MainPage/>
-        },
-        {
-            path: "/schedule",
-            element: <SchedulePage/>
-        },
-        {
-            path: "/profilepage",
-            element: <ProfilePage/>
-        },
-    ],
-)
+        [
+            {
+                path: "/",
+                element: <MainPage/>
+            },
+            {
+                path: "/schedule",
+                element: <SchedulePage/>
+            },
+            {
+                path: "/profilepage",
+                element: <ProfilePage/>
+            },
+        ],
+    )
 ;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

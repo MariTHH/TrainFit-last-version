@@ -1,7 +1,7 @@
 import React from "react";
 
-const Monitor = () =>{
-    return(
+const Monitor = () => {
+    return (
         <div>
 
         </div>
