@@ -69,6 +69,9 @@ function LogIn() {
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
                     localStorage.setItem("login", store.getLogin())
+                    if(localStorage.getItem("sex")==null) {
+                        localStorage.setItem("sex", store.getSex())
+                    }
                     navigate("/profilepage");
                 }
             })

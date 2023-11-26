@@ -8,6 +8,7 @@ import 'css/style.css';
 
 import MainPage from "./routes/mainPage/script";
 import ProfilePage from "./routes/profilePage/script";
+import SchedulePage from "./routes/schedulePage/script";
 import store from "./store";
 
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter(
         {
             path: "/",
             element: <MainPage/>
+        },
+        {
+            path: "/schedule",
+            element: <SchedulePage/>
         },
         {
             path: "/profilepage",

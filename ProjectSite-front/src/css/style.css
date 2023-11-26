@@ -4,7 +4,7 @@ body {
     background: url(../../public/Sky.jpg) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 

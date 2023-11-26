@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import AppContainer from "../components/appContainer/script";
 import img from "../profile/img.png";
 import {useNavigate} from "react-router-dom";
@@ -9,9 +9,12 @@ import localStorage from "mobx-localstorage";
 
 function Profile() {
     const navigate = useNavigate();
-    let [username, setUsername] = useState("");
-    const [weight, setWeight] = useState("");
-    const [sex, setSex] = useState("");
+    let [username, setUsername] = useState(localStorage.getItem("login"));
+    const [weight, setWeight] = useState(localStorage.getItem("weight"));
+    const [sex, setSex] = useState(localStorage.getItem("sex"));
+    store.setLogin(localStorage.getItem("login"));
+    store.setWeight(localStorage.getItem("weight"));
+    store.setSex(localStorage.getItem("sex"));
 
     const goBack = () => {
         window.history.back();
@@ -27,6 +30,14 @@ function Profile() {
         view();
         document.getElementById(id).style.display = "block";
     }
+
+    React.useEffect(() => {
+            var Item = localStorage.getItem("sex");
+            if (Item !== undefined && document.getElementById(Item) !== null) {
+                document.getElementById(Item).checked = true;
+            }
+        }
+    )
 
     function view() {
         document.getElementById("profileBox").style.display = "none";
@@ -51,7 +62,12 @@ function Profile() {
             method: "POST",
             body: formData
         }).then(response => {
-            console.log(store.getLogin())
+            store.setWeight(weight);
+            store.setSex(sex);
+            localStorage.setItem("login", username);
+            store.setLogin(username)
+            localStorage.setItem("weight", store.getWeight());
+            localStorage.setItem("sex", sex);
         })
     }
 
@@ -71,7 +87,7 @@ function Profile() {
                     <div className="profile" onClick={() => handleMouseClick('profileBox')}>
                         <a>Профиль</a>
                     </div>
-                    <div className="shedule" onClick={() => handleMouseClick('sheduleBox')}>
+                    <div className="shedule" onClick={() => navigate('/schedule')}>
                         <a>Расписание</a>
                     </div>
                     <div className="progress" onClick={() => dropThis()}>
@@ -86,19 +102,19 @@ function Profile() {
             </div>
 
             <div className="profileBox" id={"profileBox"}>
-                <input className="username" id={"username"} type="text" placeholder="username" value={username}
+                <input className="username" id={"username"} type="text" placeholder={"username"} value={username}
                        onChange={e => setUsername(e.target.value)}/>
                 <input className="weight" type="text" placeholder="weight" value={weight}
                        onChange={e => setWeight(e.target.value)}/>
                 <div className="sex" id="r_select">
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="women"
-                               onChange={e => setSex(e.target.value)} checked={sex === ('women')}></input>
+                        <input className="sex-radio" id={"women"} type="radio" name="sex_value" value="women"
+                               onChange={e => setSex(e.target.value)}></input>
                         <span> Female </span>
                     </label>
                     <label>
-                        <input className="sex-radio" type="radio" name="sex_value" value="man"
-                               onChange={e => setSex(e.target.value)} checked={sex === ('man')}></input>
+                        <input className="sex-radio" id="man" type="radio" name="sex_value" value="man"
+                               onChange={e => setSex(e.target.value)}></input>
                         <span> Male </span>
                     </label>
                 </div>

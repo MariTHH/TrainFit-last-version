@@ -10,19 +10,19 @@
     "mobx-localstorage": "^1.2.0",
     "mobx-persist": "^0.4.1",
     "mobx-react": "^9.0.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.16.0",
     "react-scripts": "^5.0.1",
-    "springjs": "^1.1.15"
+    "springjs": "^1.1.15",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
-    "@types/node-fetch": "^2.6.6",
-    "eslint": "^8.51.0",
-    "eslint-plugin-react": "^7.33.2"
+    "@types/node-fetch": "^2.6.6"
   },
   "scripts": {
     "start": "PORT=8080 react-scripts start",
