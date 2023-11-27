@@ -6,7 +6,7 @@
     line-height: 30px;
     border-radius: 50%;
     text-align: center;
-    left: 50px;
+    left: 14px;
     top:190px;
     color: white;
 }
@@ -25,7 +25,8 @@
     top:290px;
 }
 
-.profile,.shedule, .back-button, .progress {
+.profile,.schedule, .back-button, .progress {
+    justify-content: center;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,14 +41,14 @@
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
 }
 
-.profile:hover,.shedule:hover, .back-button:hover, .progress:hover {
+.profile:hover,.schedule:hover, .back-button:hover, .progress:hover {
     background: royalblue;
     transition: all 0.2s ease;
     transform: translate(0,-3px);
     box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
-.profile a,.shedule a, .back-button a, .progress a {
+.profile a,.schedule a, .back-button a, .progress a {
     color: white;
     transition: all 0.2s ease;
     font-size: 20px;
@@ -90,7 +91,8 @@
     background-color: rgba(20, 122, 157, 0.39);
 }
 
-.profileBox, .sheduleBox{
+.profileBox, .scheduleBox{
+
     display: none;
     width: 1000px;
     height: 700px;
@@ -109,20 +111,28 @@
     flex-direction: row;
     top: 100px;
     left: 100px;
-    margin: 70px;
+    margin: 70px 0px 70px 139px;
     display: flex;
     align-items: center;
     padding: 6px;
     border-radius: 10px;
     border-color: cornflowerblue;
 }
+
 .sex{
     font-family: 'Comfortaa', cursive;
     margin-left: 70px;
+    font-size: 25px;
+}
+input[type=radio] {
+    width: 100px;
+    border: 0px;
+    height: 2em;
 }
 
 .save{
     display: flex;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
     padding: 6px;
@@ -134,7 +144,7 @@
     width: 150px;
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
     background-color: cornflowerblue;
-    margin-top: 300px;
+    margin-top: 154px;
     margin-left: 400px;
 }
 .save:hover{

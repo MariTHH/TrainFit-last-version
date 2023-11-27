@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
+import toast from "react-hot-toast";
 
 function Profile() {
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ function Profile() {
 
     function view() {
         document.getElementById("profileBox").style.display = "none";
-        document.getElementById("sheduleBox").style.display = "none";
+        document.getElementById("scheduleBox").style.display = "none";
     }
 
     const handleMouseClick = (id) => {
@@ -49,6 +50,15 @@ function Profile() {
     }
     const dropThis = () => {
         view()
+    }
+    function popupMessage(message) {
+        toast(message, {
+            style: {
+                borderRadius: '10px',
+                color: 'rgb(4, 30, 55)',
+                background: 'rgb(255, 255, 255, 80%)'
+            }
+        })
     }
 
     function sendParams() {
@@ -61,7 +71,8 @@ function Profile() {
         fetch("/api/params", {
             method: "POST",
             body: formData
-        }).then(response => {
+        })
+            .then(response => {
             store.setWeight(weight);
             store.setSex(sex);
             localStorage.setItem("login", username);
@@ -69,6 +80,7 @@ function Profile() {
             localStorage.setItem("weight", store.getWeight());
             localStorage.setItem("sex", sex);
         })
+
     }
 
     return (
@@ -85,13 +97,13 @@ function Profile() {
                 </div>
                 <div className="list">
                     <div className="profile" onClick={() => handleMouseClick('profileBox')}>
-                        <a>Профиль</a>
+                        <a>Profile</a>
                     </div>
-                    <div className="shedule" onClick={() => navigate('/schedule')}>
-                        <a>Расписание</a>
+                    <div className="schedule" onClick={() => navigate('/schedule')}>
+                        <a>Schedule</a>
                     </div>
                     <div className="progress" onClick={() => dropThis()}>
-                        <a>Прогресс</a>
+                        <a>Progress</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +135,7 @@ function Profile() {
                 </div>
 
             </div>
-            <div className="sheduleBox" id={"sheduleBox"}>
+            <div className="scheduleBox" id={"scheduleBox"}>
 
             </div>
         </AppContainer>

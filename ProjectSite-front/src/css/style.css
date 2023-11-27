@@ -5,6 +5,7 @@ body {
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+    overflow-y: scroll;
 }
 
 
