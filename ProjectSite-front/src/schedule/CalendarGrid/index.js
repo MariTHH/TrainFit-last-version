@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import moment from "moment";
 
 const GridWrapper = styled.div`
 	display: grid;
@@ -26,10 +27,21 @@ const DayWrapper = styled.div`
     justify-content: center;
     margin: 2px;
 	cursor: pointer;
+	`
+
+const CurrentDay = styled('div')`
+  height: 100%;
+  width: 100%;
+  background: #f00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 const CalendarGrid = ({startDay}) => {
     const day = startDay.clone().subtract(1,"day");
     const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
+    const isCurrentDay = (day) => moment().isSame(day,'day');
     return (
         <GridWrapper>
             {
@@ -42,7 +54,8 @@ const CalendarGrid = ({startDay}) => {
                             justifyContent={'flex-end'}
                         >
                             <DayWrapper>
-                                {dayItem.format("D")}
+                                {!isCurrentDay(dayItem) && dayItem.format("D")}
+                                {isCurrentDay(dayItem) && <CurrentDay>{dayItem.format("D")}</CurrentDay>}
                             </DayWrapper>
                         </RowInCell>
                     </CellWrapper>
