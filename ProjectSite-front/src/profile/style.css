@@ -105,7 +105,8 @@
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
 .username,.weight{
-    font-size: 15px;
+    touch-action: manipulation;
+    font-size: 25px;
     font-family: 'Comfortaa', cursive;
     font-weight: 300;
     flex-direction: row;
@@ -114,8 +115,8 @@
     margin: 70px 0px 70px 139px;
     display: flex;
     align-items: center;
-    padding: 6px;
-    border-radius: 10px;
+    padding: 8px;
+    border-radius: 18px;
     border-color: cornflowerblue;
 }
 
