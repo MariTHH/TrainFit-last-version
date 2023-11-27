@@ -14,8 +14,9 @@ const GridWrapper = styled.div`
 const CellWrapper = styled.div`
   min-width: 200px;
   min-height: ${props => props.isHeader ? 24 : 80}px;
-  background-color: #FFFFFF;
+  background-color:#FFFFFF;
   background-color: ${props => props.isWeekend ? '#F5F5F5' : '#FFFFFF'};
+  color: ${props => props.isSelectedMonth ? `#000000`:`#bbbbbb`};
 `;
 const RowInCell = styled.div`
   display: flex;
@@ -42,14 +43,15 @@ const CurrentDay = styled('div')`
   align-items: center;
   justify-content: center;
 `
-const CalendarGrid = ({startDay}) => {
+const CalendarGrid = ({startDay, today}) => {
     const day = startDay.clone().subtract(1, "day");
     const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
     const isCurrentDay = (day) => moment().isSame(day, 'day');
+    const isSelectedMonth = (day) => today.isSame(day, 'month');
     return (
         <>
             <GridWrapper isHeader>{[...Array(7)].map((_, i) => (
-                <CellWrapper isHeader>
+                <CellWrapper isHeader isSelectedMonth>
                     <RowInCell justifyContent={'flex-end'} pr={1}>
                     {moment().day(i+1).format('ddd')}
                     </RowInCell>
@@ -61,6 +63,7 @@ const CalendarGrid = ({startDay}) => {
                         <CellWrapper
                             isWeekend={dayItem.day() === 6 || dayItem.day() === 0} // выходные другого цвета
                             key={dayItem.unix()}
+                            isSelectedMonth={isSelectedMonth(dayItem)}
                         >
                             <RowInCell
                                 justifyContent={'flex-end'}
