@@ -34,13 +34,14 @@ a.my-button:hover {
     background-color: royalblue;
 }
 
-#input-container{
+#input-container {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
 
 }
-.small-text{
+
+.small-text {
     background: cornflowerblue;
     margin-top: -60px;
     right: 115px;
@@ -54,7 +55,8 @@ a.my-button:hover {
     font-family: 'Comfortaa', cursive;
     position: absolute;
 }
-#login-password-form{
+
+#login-password-form {
     right: 160px;
     margin-top: -20px;
     display: flex;
@@ -63,7 +65,8 @@ a.my-button:hover {
     color: white;
     position: absolute;
 }
-.input-text{
+
+.input-text {
     font-size: 15px;
     font-family: 'Comfortaa', cursive;
     font-weight: 300;

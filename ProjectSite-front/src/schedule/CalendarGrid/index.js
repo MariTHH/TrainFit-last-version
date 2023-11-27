@@ -47,8 +47,8 @@ const CalendarGrid = ({startDay}) => {
             {
                 daysArray.map((dayItem) => (
                     <CellWrapper
-                        key={dayItem.format("DDMMYYYY")}
                         isWeekend={dayItem.day() === 6 || dayItem.day() === 0} // выходные другого цвета
+                        key={dayItem.unix()}
                     >
                         <RowInCell
                             justifyContent={'flex-end'}

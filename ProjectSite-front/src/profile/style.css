@@ -65,9 +65,7 @@
     border: 3px solid cornflowerblue;
     border-radius: 10%;
     background: lightcyan;
-    margin: auto;
-    margin-top: 120px;
-    margin-left: 350px;
+    margin: 120px auto auto 350px;
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 
 }
@@ -99,9 +97,7 @@
     border: 3px solid cornflowerblue;
     border-radius: 10%;
     background: lightcyan;
-    margin: auto;
-    margin-top: -110px;
-    margin-left: 350px;
+    margin: -110px auto auto 350px;
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
 .username,.weight{

@@ -36,7 +36,7 @@ const ButtonWrapper = styled('button')`
 const TodayButton = styled(ButtonWrapper)`
 	font-weight: bold;
 `;
-const Monitor = ({today}) => {
+const Monitor = ({today,prevHandler,todayHandler,nextHandler}) => {
     return (
         <DivWrapper>
             <div>
@@ -48,9 +48,9 @@ const Monitor = ({today}) => {
                 </TextWrapper>
             </div>
             <ButtonsWrapper>
-                <ButtonWrapper> &lt; </ButtonWrapper>
-                <TodayButton>Today</TodayButton>
-                <ButtonWrapper> &gt; </ButtonWrapper>
+                <ButtonWrapper onClick={prevHandler}> &lt; </ButtonWrapper>
+                <TodayButton onClick={todayHandler}>Today</TodayButton>
+                <ButtonWrapper onClick={nextHandler}> &gt; </ButtonWrapper>
             </ButtonsWrapper>
 
         </DivWrapper>

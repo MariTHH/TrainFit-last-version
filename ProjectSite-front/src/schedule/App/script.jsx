@@ -19,13 +19,20 @@ const ShadowWrapper = styled('div')`
 `;
 function Schedule() {
     moment.updateLocale('en',{week:{dow:1}})
-    const today = moment();
+    // const today = moment();
+    const [today, setToday] = useState(moment())
     const startDay = today.clone().startOf('month').startOf('week');
+    const prevHandler = () => {setToday(prev => prev.clone().subtract(1, 'month'))};
+    const todayHandler = () => setToday(moment())
+    const nextHandler = () => {setToday(prev => prev.clone().add(1, 'month'))};
     return (
         <AppSchedule>
             <ShadowWrapper>
                 <Header/>
-                <Monitor today={today}/>
+                <Monitor today={today}
+                         prevHandler={prevHandler}
+                         todayHandler={todayHandler}
+                         nextHandler={nextHandler}/>
                 <CalendarGrid startDay={startDay}/>
             </ShadowWrapper>
         </AppSchedule>
