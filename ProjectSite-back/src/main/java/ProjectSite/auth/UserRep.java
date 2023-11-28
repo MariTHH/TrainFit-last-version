@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UserRep extends JpaRepository<User, Long> {
     User findByLogin(String login);
-    User deleteByLogin(String login);
 
+    int countByLogin(String login);
 }

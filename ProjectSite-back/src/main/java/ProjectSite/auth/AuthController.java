@@ -1,10 +1,7 @@
 package ProjectSite.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
@@ -28,5 +25,9 @@ public class AuthController {
     @PostMapping("/api/params")
     public void params(@RequestParam("login") String login, @RequestParam("username") String username,@RequestParam("sex") String sex, @RequestParam("weight") String weight) {
         authService.addParams(login,username, sex, weight);
+    }
+    @PostMapping("/api/getParams")
+    public String param(@RequestParam("login") String login) {
+        return authService.getParams(login);
     }
 }

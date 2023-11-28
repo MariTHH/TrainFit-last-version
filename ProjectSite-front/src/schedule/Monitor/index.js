@@ -36,7 +36,7 @@ const ButtonWrapper = styled('button')`
 const TodayButton = styled(ButtonWrapper)`
 	font-weight: bold;
 `;
-const Monitor = ({today,prevHandler,todayHandler,nextHandler}) => {
+const Monitor = ({today, prevHandler, todayHandler, nextHandler}) => {
     return (
         <DivWrapper>
             <div>

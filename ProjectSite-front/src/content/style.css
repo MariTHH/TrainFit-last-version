@@ -57,7 +57,7 @@
 
 img {
     animation: show 1s;
-    left: 910px;
+    left: 880px; /*910*/
     display: flex;
     width: 30%;
     height: 80vh;

@@ -5,6 +5,7 @@ import {Monitor} from "../Monitor";
 import moment from "moment";
 import styled from "styled-components";
 import AppSchedule from "../../components/appSchedule/script";
+import {useNavigate} from "react-router-dom";
 
 const ShadowWrapper = styled('div')`
   border-top: 1px solid #C5C5C5;
@@ -17,14 +18,20 @@ const ShadowWrapper = styled('div')`
   display: flex;
   flex-direction: column;
 `;
+
 function Schedule() {
-    moment.updateLocale('en',{week:{dow:1}})
+    const navigate = useNavigate();
+    moment.updateLocale('en', {week: {dow: 1}})
     // const today = moment();
     const [today, setToday] = useState(moment())
     const startDay = today.clone().startOf('month').startOf('week');
-    const prevHandler = () => {setToday(prev => prev.clone().subtract(1, 'month'))};
+    const prevHandler = () => {
+        setToday(prev => prev.clone().subtract(1, 'month'))
+    };
     const todayHandler = () => setToday(moment())
-    const nextHandler = () => {setToday(prev => prev.clone().add(1, 'month'))};
+    const nextHandler = () => {
+        setToday(prev => prev.clone().add(1, 'month'))
+    };
     return (
         <AppSchedule>
             <ShadowWrapper>

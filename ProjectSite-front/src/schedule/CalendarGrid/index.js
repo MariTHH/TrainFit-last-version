@@ -16,7 +16,7 @@ const CellWrapper = styled.div`
   min-height: ${props => props.isHeader ? 24 : 80}px;
  
   background-color: ${props => props.isWeekend ? '#F5F5F5' : '#FFFFFF'};
-  color: ${props => props.isSelectedMonth ? `#000000`:`#bbbbbb`};
+  color: ${props => props.isSelectedMonth ? `#000000` : `#bbbbbb`};
 `;
 const RowInCell = styled.div`
   display: flex;
@@ -53,9 +53,9 @@ const CalendarGrid = ({startDay, today}) => {
             <GridWrapper isHeader>{[...Array(7)].map((_, i) => (
                 <CellWrapper isHeader isSelectedMonth>
                     <RowInCell justifyContent={'flex-end'} pr={1}>
-                    {moment().day(i+1).format('ddd')}
+                        {moment().day(i + 1).format('ddd')}
                     </RowInCell>
-            </CellWrapper>))}
+                </CellWrapper>))}
             </GridWrapper>
             <GridWrapper>
                 {

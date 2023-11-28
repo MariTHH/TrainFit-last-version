@@ -1,6 +1,5 @@
 package ProjectSite.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,8 +26,13 @@ public class AuthService {
     }
 
     public void addParams(String login, String username, String sex, String weight) {
+
+        long count = userRepository.countByLogin(username);
+        if (count > 1) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Login has been taken");
+        }
+
         User user = userRepository.findByLogin(login);
-        System.out.println(username);
         if (!username.equals("")) {
             user.setLogin(username);
         }
@@ -79,8 +83,7 @@ public class AuthService {
             StringBuilder hexBuilder = new StringBuilder();
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1)
-                    hexBuilder.append('0');
+                if (hex.length() == 1) hexBuilder.append('0');
                 hexBuilder.append(hex);
             }
             return hexBuilder.toString();
@@ -90,8 +93,10 @@ public class AuthService {
     }
 
 
-    public void deleteUserByLogin(String login) {
-        userRepository.deleteByLogin(login);
+    public String getParams(String login) {
+        User user = userRepository.findByLogin(login);
+        return user.getWeight();
+
     }
 
 }

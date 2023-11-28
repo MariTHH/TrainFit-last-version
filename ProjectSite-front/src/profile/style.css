@@ -7,25 +7,26 @@
     border-radius: 50%;
     text-align: center;
     left: 14px;
-    top:190px;
+    top: 190px;
     color: white;
 }
-.user-info-name{
+
+.user-info-name {
     width: 100px;
 
 }
 
-.list{
+.list {
     display: flex;
     flex-direction: column;
     position: absolute;
     background-color: cornflowerblue;
     border-radius: 10%;
     left: 100px;
-    top:290px;
+    top: 290px;
 }
 
-.profile,.schedule, .back-button, .progress {
+.profile, .schedule, .back-button, .progress {
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -41,25 +42,27 @@
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
 }
 
-.profile:hover,.schedule:hover, .back-button:hover, .progress:hover {
+.profile:hover, .schedule:hover, .back-button:hover, .progress:hover {
     background: royalblue;
     transition: all 0.2s ease;
-    transform: translate(0,-3px);
+    transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
-.profile a,.schedule a, .back-button a, .progress a {
+.profile a, .schedule a, .back-button a, .progress a {
     color: white;
     transition: all 0.2s ease;
     font-size: 20px;
     cursor: pointer;
 }
-.back-button{
+
+.back-button {
     padding: 6px;
     width: 50px;
     margin-top: -500px;
 }
-.graph{
+
+.graph {
     width: 450px;
     height: 350px;
     border: 3px solid cornflowerblue;
@@ -69,7 +72,8 @@
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 
 }
-.shed{
+
+.shed {
     width: 450px;
     height: 350px;
     border: 3px solid cornflowerblue;
@@ -79,7 +83,8 @@
     margin-left: 900px;
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
-.header1{
+
+.header1 {
     font-family: 'Montserrat', sans-serif;
     font-size: xx-large;
     text-align: center;
@@ -89,10 +94,10 @@
     background-color: rgba(20, 122, 157, 0.39);
 }
 
-.profileBox, .scheduleBox{
+.profileBox, .scheduleBox {
 
     display: none;
-    width: 1100px;
+    width: 1050px;/*1100*/
     height: 700px;
     border: 3px solid cornflowerblue;
     border-radius: 10%;
@@ -100,7 +105,8 @@
     margin: -110px auto auto 350px;
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
-.username,.weight{
+
+.username, .weight {
     touch-action: manipulation;
     font-size: 25px;
     font-family: 'Comfortaa', cursive;
@@ -116,18 +122,19 @@
     border-color: cornflowerblue;
 }
 
-.sex{
+.sex {
     font-family: 'Comfortaa', cursive;
     margin-left: 70px;
     font-size: 25px;
 }
+
 input[type=radio] {
     width: 100px;
     border: 0px;
     height: 2em;
 }
 
-.save{
+.save {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -144,10 +151,11 @@ input[type=radio] {
     margin-top: 154px;
     margin-left: 475px;
 }
-.save:hover{
+
+.save:hover {
     background: royalblue;
     transition: all 0.2s ease;
-    transform: translate(0,-3px);
+    transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
 }
 
