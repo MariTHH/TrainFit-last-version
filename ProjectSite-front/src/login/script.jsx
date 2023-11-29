@@ -69,14 +69,13 @@ function LogIn() {
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
                     localStorage.setItem("login", store.getLogin())
-                    if(localStorage.getItem("sex")==null) {
-                        localStorage.setItem("sex", store.getSex())
-                    }
                     return response.json()
-                    // navigate("/profilepage");
                 }
             }).then(function(data) {
-                console.log(data);
+                console.log(data.name);
+                console.log(data.weight);
+                console.log(data.sex);
+                navigate("/profilepage");
             })
         }
     }
