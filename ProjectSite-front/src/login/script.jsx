@@ -72,9 +72,8 @@ function LogIn() {
                     return response.json()
                 }
             }).then(function(data) {
-                console.log(data.name);
-                console.log(data.weight);
-                console.log(data.sex);
+                localStorage.setItem("weight", data.weight);
+                localStorage.setItem("sex", data.sex);
                 navigate("/profilepage");
             })
         }
@@ -93,6 +92,8 @@ function LogIn() {
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
                     localStorage.setItem("login", store.getLogin())
+                    localStorage.setItem("weight", "");
+                    localStorage.setItem("sex", "");
                     navigate("/profilepage");
                 }
             })
