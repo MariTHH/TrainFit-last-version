@@ -95,7 +95,6 @@ function LogIn() {
                     localStorage.setItem("weight", "");
                     localStorage.setItem("sex", "");
                     navigate("/profilepage");
-
                 }
             })
 
