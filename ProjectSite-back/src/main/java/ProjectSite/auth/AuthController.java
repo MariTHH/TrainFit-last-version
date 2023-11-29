@@ -18,8 +18,8 @@ public class AuthController {
     }
 
     @PostMapping("/api/login")
-    public void login(@RequestHeader("Authorization") String authorization) {
-        authService.check(authorization);
+    public String login(@RequestHeader("Authorization") String authorization) {
+        return authService.check(authorization);
     }
 
     @PostMapping("/api/params")

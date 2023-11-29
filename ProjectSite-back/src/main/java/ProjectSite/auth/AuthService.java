@@ -66,6 +66,10 @@ public class AuthService {
         }
 
         User user = userRepository.findByLogin(login);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", user.getLogin());
+        jsonObject.put("weight", user.getWeight());
+        jsonObject.put("sex", user.getSex());
         if (user == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid login");
         }
@@ -74,7 +78,7 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid password");
         }
 
-        return user.getLogin();
+        return jsonObject.toString();
     }
 
     private String getHash(String password) {

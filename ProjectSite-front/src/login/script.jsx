@@ -66,13 +66,14 @@ function LogIn() {
                 headers: {"Authorization": "Basic " + btoa(newLogin + ":" + newPassword).replaceAll("=", "")}
             }).then(response => {
                 if (checkResponse(response)) {
+                    console.log(response.text());
                     store.setLogin(newLogin);
                     store.setPassword(newPassword);
                     localStorage.setItem("login", store.getLogin())
                     if(localStorage.getItem("sex")==null) {
                         localStorage.setItem("sex", store.getSex())
                     }
-                    navigate("/profilepage");
+                    // navigate("/profilepage");
                 }
             })
         }
