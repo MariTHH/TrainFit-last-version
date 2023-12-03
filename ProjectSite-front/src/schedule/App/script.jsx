@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Header} from "../Header";
 import {CalendarGrid} from "../CalendarGrid";
 import {Monitor} from "../Monitor";
@@ -18,6 +18,8 @@ const ShadowWrapper = styled('div')`
   display: flex;
   flex-direction: column;
 `;
+const url = 'http://localhost:3001';
+const totalDays = 42;
 
 function Schedule() {
     const navigate = useNavigate();
@@ -32,6 +34,17 @@ function Schedule() {
     const nextHandler = () => {
         setToday(prev => prev.clone().add(1, 'month'))
     };
+    const [events, setEvents] = useState([]);
+    const startDateQuery = startDay.clone().format('X');
+    const endDateQuery = today.clone().add(totalDays,'days').format('X');
+    useEffect(() => {
+        fetch(`${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                setEvents(res);
+            })
+    }, [])
     return (
         <AppSchedule>
             <ShadowWrapper>
@@ -41,7 +54,7 @@ function Schedule() {
                          todayHandler={todayHandler}
                          nextHandler={nextHandler}/>
 
-                <CalendarGrid startDay={startDay} today={today}/>
+                <CalendarGrid startDay={startDay} today={today} totalDays={totalDays}/>
             </ShadowWrapper>
         </AppSchedule>
     )
