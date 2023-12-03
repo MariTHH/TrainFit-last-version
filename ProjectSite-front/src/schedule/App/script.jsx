@@ -34,6 +34,7 @@ function Schedule() {
     const nextHandler = () => {
         setToday(prev => prev.clone().add(1, 'month'))
     };
+    const [event, setEvent] = useState(null);//event for redaction
     const [events, setEvents] = useState([]);
     const startDateQuery = startDay.clone().format('X');
     const endDateQuery = today.clone().add(totalDays,'days').format('X');
@@ -44,7 +45,11 @@ function Schedule() {
                 console.log(res);
                 setEvents(res);
             })
-    }, [])
+    }, [today])
+    const openFormHandler = (method, eventForUpdate) => {
+        console.log("s", method);
+        setEvent(eventForUpdate)
+    }
     return (
         <AppSchedule>
             <ShadowWrapper>
@@ -54,7 +59,7 @@ function Schedule() {
                          todayHandler={todayHandler}
                          nextHandler={nextHandler}/>
 
-                <CalendarGrid startDay={startDay} today={today} totalDays={totalDays}/>
+                <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events} openFormHandler={openFormHandler}/>
             </ShadowWrapper>
         </AppSchedule>
     )
