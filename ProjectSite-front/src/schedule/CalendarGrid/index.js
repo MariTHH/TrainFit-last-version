@@ -48,7 +48,6 @@ const ShowDayWrapper = styled('div')`
 	justify-content: flex-end;
 `;
 const EventListWrapper = styled('ul')`
-  margin: unset;
   list-style-position:inside;
   padding-left: 4px;
 `;
@@ -109,11 +108,11 @@ const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler}) => 
                                         events
                                             .filter(event => event.date >= dayItem.format('X') && event.date <= dayItem.clone().endOf('day').format('X'))
                                             .map(event =>(
-                                                <li key={event.id}>
+                                                <div key={event.id}>
                                                     <EventItemWrapper onDoubleClick={() => openFormHandler("Update",event)}>
                                                         {event.title}
                                                     </EventItemWrapper>
-                                                </li>
+                                                </div>
                                             ))
                                     }
                                 </EventListWrapper>
