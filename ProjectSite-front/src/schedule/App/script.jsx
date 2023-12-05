@@ -66,8 +66,8 @@ export const ButtonsWrapper = styled('div')`
 `;
 
 export const ButtonWrapper = styled('button')`
-  color: black;
-  border: 1px solid black;
+  color: ${props => props.danger ? '#f00' : '#272282A'};
+  border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
   border-radius: 2px;
   cursor: pointer;
   &:not(:last-child){
@@ -189,7 +189,7 @@ function Schedule() {
                                 <ButtonWrapper onClick={eventFetchHandler}>{method}</ButtonWrapper>
                                 {
                                     method === 'Update' ? (
-                                        <ButtonWrapper onClick={removeEventHandler}>Remove</ButtonWrapper>
+                                        <ButtonWrapper danger onClick={removeEventHandler}>Remove</ButtonWrapper>
                                     ) : null
                                 }
                             </ButtonsWrapper>
