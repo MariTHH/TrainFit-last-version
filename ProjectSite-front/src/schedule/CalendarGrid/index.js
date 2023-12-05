@@ -61,10 +61,8 @@ const EventItemWrapper = styled('button')`
 	border: unset;
 	color: #000000;
 	cursor: pointer;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background-color: #FFFFFF;
+
+	background-color: lightblue;
 	border-radius: 2px;
 `;
 const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler}) => {
@@ -93,7 +91,7 @@ const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler}) => 
                                 justifyContent={'flex-end'}
                             >
                                 <ShowDayWrapper>
-                                    <DayWrapper onDoubleClick={() => openFormHandler("Create")}>
+                                    <DayWrapper onDoubleClick={() => openFormHandler("Create",null,dayItem)}>
                                         {
                                             isCurrentDay(dayItem) ? (
                                                 <CurrentDay>{dayItem.format('D')}</CurrentDay>
