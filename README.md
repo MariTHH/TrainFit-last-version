@@ -1,1 +1,3 @@
 # TrainFit
+
+npm start
