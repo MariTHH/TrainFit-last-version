@@ -71,6 +71,7 @@ const EventBody = styled('textarea')`
 export const ButtonsWrapper = styled('div')`
   padding: 8px 14px;
   display: flex;
+  background-color: #FFFFFF;
   justify-content: flex-end;
 `;
 
@@ -123,9 +124,11 @@ function Schedule() {
     }, [today])
     const openFormHandler = (methodName, eventForUpdate, dayItem) => {
         setEvent(eventForUpdate || {...defaultEvent, date: dayItem.format('X')});
-        setShowForm(true);
         setMethod(methodName);
-        console.log(event);
+    }
+    const openModalFormHandler = (methodName, eventForUpdate, dayItem) => {
+        setShowForm(true);
+        openFormHandler(methodName, eventForUpdate, dayItem);
     }
     const cancelButtonHandler = () => {
         setShowForm(false);
@@ -218,16 +221,20 @@ function Schedule() {
                              displayMode={displayMode}
                     />
                     {
-                        displayMode ===DISPLAY_MODE_MONTH ? (
-                    <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}
-                                  openFormHandler={openFormHandler}/>
-                        ): null
+                        displayMode === DISPLAY_MODE_MONTH ? (
+                            <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}
+                                          openFormHandler={openModalFormHandler} setDisplayMode={setDisplayMode}/>
+                        ) : null
                     }
                     {
-                        displayMode ===DISPLAY_MODE_DAY?(
-                            <DayShowComponent events={events} today={today} selectedEvent={event} setEvent={setEvent}/>
-
-
+                        displayMode === DISPLAY_MODE_DAY ? (
+                            <DayShowComponent events={events} today={today} selectedEvent={event}
+                                              changeEventHandler={changeEventHandler}
+                                              cancelButtonHandler={cancelButtonHandler}
+                                              eventFetchHandler={eventFetchHandler}
+                                              method={method}
+                                              removeEventHandler={removeEventHandler}
+                                              openFormHandler={openFormHandler}/>
                         ) : null
                     }
                 </ShadowWrapper>

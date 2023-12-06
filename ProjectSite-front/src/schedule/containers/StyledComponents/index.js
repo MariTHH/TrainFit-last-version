@@ -51,8 +51,8 @@ export const EventTitle = styled('input')`
   font-size: .85rem;
   width: 100%;
   border: unset;
-  background-color: #1E1F21;
-  color: #DDDDDD;
+  background-color: #FFFFFF;
+  color: #000000;
   outline: unset;
   border-bottom: 1px solid #464648;
 `;
@@ -62,11 +62,11 @@ export const EventBody = styled('textarea')`
   font-size: .85rem;
   width: 100%;
   border: unset;
-  background-color: #1E1F21;
-  color: #DDDDDD;
+  background-color: #FFFFFF;
+  color: #000000;
   outline: unset;
   border-bottom: 1px solid #464648;
-  resize: none;
+  resize:none;
   height: 60px;
 `;
 
@@ -74,6 +74,8 @@ export const ButtonsWrapper = styled('div')`
   padding: 8px 14px;
   display: flex;
   justify-content: flex-end;
+  outline: unset;
+ 
 `;
 
 export const ButtonWrapper = styled('button')`

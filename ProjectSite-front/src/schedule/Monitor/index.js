@@ -63,8 +63,10 @@ const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode,
                 </TextWrapper>
             </div>
             <ButtonsCenterWrapper>
-                <ButtonsWrapper unPressed={displayMode === DISPLAY_MODE_MONTH} onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}>Month</ButtonsWrapper>
-                <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_DAY} onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}>Day</ButtonWrapper>
+                <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_MONTH}
+                               onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}>Month</ButtonWrapper>
+                <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_DAY}
+                               onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}>Day</ButtonWrapper>
             </ButtonsCenterWrapper>
             <ButtonsWrapper>
                 <ButtonWrapper onClick={prevHandler}> &lt; </ButtonWrapper>
