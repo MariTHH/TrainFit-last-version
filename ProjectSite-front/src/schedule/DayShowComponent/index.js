@@ -10,6 +10,8 @@ import {
     ButtonsWrapper,
     ButtonWrapper
 } from "../containers/StyledComponents";
+import {ITEMS_PER_DAY} from "../helpers/constants";
+import moment from "moment";
 
 const DayShowWrapper = styled('div')`
   display: flex;
@@ -19,7 +21,7 @@ const DayShowWrapper = styled('div')`
 
 const EventsListWrapper = styled('div')`
   background-color: #FFFFFF;
-  color: #DDDDDD;
+  color: black;
   flex-grow: 1;
 `;
 const EventFormWrapper = styled('div')`
@@ -36,7 +38,38 @@ const NoEventMsg = styled('div')`
   right: 50%;
   transform: translate(50%,-50%);
 `;
+const ScaleWrapper = styled('div')`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px;
+  position: relative;
+`;
 
+const ScaleCellWrapper = styled('div')`
+  flex-grow: 1;
+  position: relative;
+  &:not(:last-child){
+    border-bottom: 1px solid #464648;
+  }
+  margin-left: 32px;
+`;
+
+const ScaleCellTimeWrapper = styled('div')`
+  position: absolute;
+  left: -26px;
+  top: -6px;
+  font-size: 8px;
+`;
+
+const ScaleCellEventWrapper = styled('div')`
+  min-height: 20px;
+`;
+const EventItemButton = styled(EventItemWrapper)`
+    min-width: 50px;
+    width: unset;
+    margin-left: 4px;
+`
 
 export const DayShowComponent = ({
                                      events,
@@ -50,20 +83,45 @@ export const DayShowComponent = ({
                                      openFormHandler
                                  }) => {
     const eventList = events.filter(event => isDayContainCurrentEvent(event, today))
+    const cells = [...new Array(ITEMS_PER_DAY)].map((_, i) => {
+        const temp = [];
+        eventList.forEach(event => {
+            if (+moment.unix(+event.date).format('H') === i) {
+                temp.push(event);
+            }
+        })
+        return temp;
+    })
     return (
         <DayShowWrapper>
             <EventsListWrapper>
-                <EventListWrapper>
+                <ScaleWrapper>
                     {
-                        eventList.map(event => (
-                            <EventListItemWrapper key={event.id}>
-                                <EventItemWrapper onClick={() => openFormHandler('Update', event)}>
-                                    {event.title}
-                                </EventItemWrapper>
-                            </EventListItemWrapper>
+                        cells.map((eventList, i) => (
+                            <ScaleCellWrapper>
+                                <ScaleCellTimeWrapper>
+                                    {
+                                        i ? (
+                                            <>
+                                                {`${i}`.padStart(2, `0`)}:00
+                                            </>
+                                        ) : null
+                                    }
+                                </ScaleCellTimeWrapper>
+                                <ScaleCellEventWrapper>
+                                    {
+                                        eventList.map(event =>(
+                                            <EventItemButton onClick={() => openFormHandler('Update', event)}>
+                                                {event.title}
+                                            </EventItemButton>
+                                        ))
+                                    }
+                                </ScaleCellEventWrapper>
+
+                            </ScaleCellWrapper>
                         ))
                     }
-                </EventListWrapper>
+                </ScaleWrapper>
             </EventsListWrapper>
             <EventFormWrapper>
                 {
