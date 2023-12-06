@@ -6,8 +6,13 @@ import moment from "moment";
 import styled from "styled-components";
 import AppSchedule from "../../components/appSchedule/script";
 import {useNavigate} from "react-router-dom";
+import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
+import {DayShowComponent} from "../DayShowComponent";
 
 const ShadowWrapper = styled('div')`
+  min-width: 850px;
+  height:630px;
+
   border-top: 1px solid #C5C5C5;
   border-left: 1px solid #B5B7B9;
   border-right: 1px solid #B5B7B9;
@@ -30,12 +35,16 @@ const FormPositionWrapper = styled('div')`
   align-items: center;
   justify-content: center;
 `;
+
 const FormWrapper = styled(ShadowWrapper)`
   width: 320px;
-  background-color: #FFFFFF;
-  color: #000000;
+  min-width: 320px;
+  height: 132px;
+  background-color: #1E1F21;
+  color: #DDDDDD;
   box-shadow:unset;
 `;
+
 const EventTitle = styled('input')`
   padding: 8px 14px;
   font-size: .85rem;
@@ -84,17 +93,18 @@ const defaultEvent = {
 }
 
 function Schedule() {
+    const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
     const navigate = useNavigate();
     moment.updateLocale('en', {week: {dow: 1}})
     // const today = moment();
     const [today, setToday] = useState(moment())
-    const startDay = today.clone().startOf('month').startOf('week');
+    const startDay = today.clone().startOf(DISPLAY_MODE_MONTH).startOf('week');
     const prevHandler = () => {
-        setToday(prev => prev.clone().subtract(1, 'month'))
+        setToday(prev => prev.clone().subtract(1, displayMode))
     };
     const todayHandler = () => setToday(moment())
     const nextHandler = () => {
-        setToday(prev => prev.clone().add(1, 'month'))
+        setToday(prev => prev.clone().add(1, displayMode))
     };
 
     const [method, setMethod] = useState(null)
@@ -203,10 +213,23 @@ function Schedule() {
                     <Monitor today={today}
                              prevHandler={prevHandler}
                              todayHandler={todayHandler}
-                             nextHandler={nextHandler}/>
-
+                             nextHandler={nextHandler}
+                             setDisplayMode={setDisplayMode}
+                             displayMode={displayMode}
+                    />
+                    {
+                        displayMode ===DISPLAY_MODE_MONTH ? (
                     <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}
                                   openFormHandler={openFormHandler}/>
+                        ): null
+                    }
+                    {
+                        displayMode ===DISPLAY_MODE_DAY?(
+                            <DayShowComponent events={events} today={today} selectedEvent={event} setEvent={setEvent}/>
+
+
+                        ) : null
+                    }
                 </ShadowWrapper>
             </AppSchedule>
         </>
