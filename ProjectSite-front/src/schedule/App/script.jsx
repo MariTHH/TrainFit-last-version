@@ -11,7 +11,6 @@ import {DayShowComponent} from "../DayShowComponent";
 
 const ShadowWrapper = styled('div')`
   min-width: 850px;
-  height:630px;
 
   border-top: 1px solid #C5C5C5;
   border-left: 1px solid #B5B7B9;
@@ -89,7 +88,8 @@ const totalDays = 42;
 const defaultEvent = {
     title: '',
     description: '',
-    date: moment().format('X')
+    date: moment().format('X'),
+    exercise: ""
 
 }
 
