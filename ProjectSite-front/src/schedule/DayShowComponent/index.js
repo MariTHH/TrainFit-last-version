@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {isDayContainCurrentEvent} from "../helpers";
 import styled from "styled-components"
 import {
@@ -71,6 +71,35 @@ const EventItemButton = styled(EventItemWrapper)`
     margin-left: 4px;
 `
 
+const SelectEventTimeWrapper = styled('div')`
+  padding: 8px 14px;
+  border-bottom: 1px solid #464648;
+  display: flex;
+`;
+const ListOfHours = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  overflow-y: scroll;
+  color: #000;
+  position: absolute;
+  left: 2px;
+  background-color: rgb(239, 239, 239);
+`;
+
+const PositionRelative = styled('div')`
+  position: relative;
+`;
+
+const HoursButton = styled('button')`
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+`;
+
+
+
 export const DayShowComponent = ({
                                      events,
                                      today,
@@ -83,6 +112,7 @@ export const DayShowComponent = ({
                                      openFormHandler
                                  }) => {
     const eventList = events.filter(event => isDayContainCurrentEvent(event, today))
+    const [showTimePicker, setShowTimePicker] = useState(false);
     const cells = [...new Array(ITEMS_PER_DAY)].map((_, i) => {
         const temp = [];
         eventList.forEach(event => {
@@ -92,6 +122,13 @@ export const DayShowComponent = ({
         })
         return temp;
     })
+
+    const setTimeForEvent = (i) => {
+        setShowTimePicker(false);
+        const time = moment.unix(+selectedEvent.date).hour(i).format('X')
+        changeEventHandler(time, 'date');
+    }
+
     return (
         <DayShowWrapper>
             <EventsListWrapper>
@@ -132,6 +169,28 @@ export const DayShowComponent = ({
                                 onChange={e => changeEventHandler(e.target.value, 'title')}
                                 placeholder="Title"
                             />
+                            <SelectEventTimeWrapper>
+                                <PositionRelative>
+                                    <button>{moment.unix(+selectedEvent.date).format('dddd, D MMMM')} </button>
+                                </PositionRelative>
+
+                                <PositionRelative>
+                                    <button onClick={() => setShowTimePicker(prevState => !prevState)}>{moment.unix(+selectedEvent.date).format('HH:mm')} </button>
+
+
+                                {
+                                    showTimePicker ? (
+                                        <ListOfHours>{
+                                            [...new Array(ITEMS_PER_DAY)].map((_, i) => (
+                                                <li>
+                                                    <HoursButton onClick={()=> setTimeForEvent(i)}>{`${i}`.padStart(2, `0`)}:00</HoursButton>
+                                                </li>
+                                            ))
+                                        }</ListOfHours>
+                                    ) : null
+                                }
+                                </PositionRelative>
+                            </SelectEventTimeWrapper>
                             <EventBody
                                 value={selectedEvent.description}
                                 onChange={e => changeEventHandler(e.target.value, 'description')}
