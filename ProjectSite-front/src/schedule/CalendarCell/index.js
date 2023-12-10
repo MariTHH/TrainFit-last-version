@@ -88,7 +88,7 @@ export const CalendarCell = ({dayItem, today, openFormHandler, events, setDispla
                                 <div key={event.id}>
                                     <EventItemWrapper
                                         onDoubleClick={() => openFormHandler("Update", event)}>
-                                        {event.title}
+                                        {event.exercise}
                                     </EventItemWrapper>
                                 </div>
                             ))

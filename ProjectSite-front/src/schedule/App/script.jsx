@@ -83,6 +83,23 @@ export const ButtonWrapper = styled('button')`
     margin-right: 2px;
   }
 `;
+const ListOfHours = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  overflow-y: scroll;
+  color: #000;
+  position: absolute;
+  left: 2px;
+  background-color: rgb(239, 239, 239);
+`;
+
+const HoursButton = styled('button')`
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+`;
 const url = 'http://localhost:3001';
 const totalDays = 42;
 const defaultEvent = {
@@ -92,6 +109,15 @@ const defaultEvent = {
     exercise: ""
 
 }
+const ButEx = styled('div')`
+    position: relative;
+    left: 0px;
+    top: 0px;
+    padding: 8px 14px;
+    background-color: white;
+    border-bottom: inherit;
+    border-bottom-color: cornflowerblue;
+`;
 
 function Schedule() {
     const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
@@ -181,17 +207,32 @@ function Schedule() {
             })
 
     }
+    const [exercisesPicker, setExercisesPicker] = useState(false);
+    const array1 = ["press", "running", "planka", "otjimanie"];
+    const addExercise = (i) => {
+        setExercisesPicker(false);
+        changeEventHandler(i, 'exercise');
+    }
     return (
         <>
             {
                 isShowForm ? (
                     <FormPositionWrapper onClick={cancelButtonHandler}>
                         <FormWrapper onClick={e => e.stopPropagation()}>
-                            <EventTitle
-                                value={event.title}
-                                onChange={e => changeEventHandler(e.target.value, 'title')}
-                                placeholder="Title"
-                            />
+                            <ButEx>
+                                <button onClick={() => setExercisesPicker(prevState => !prevState)}>{`${event.exercise}`}</button>
+                                {
+                                    exercisesPicker ? (
+                                        <ListOfHours>{
+                                            [...new Array(array1.length)].map((_, i) => (
+                                                <li>
+                                                    <HoursButton
+                                                        onClick={() => addExercise(array1.at(i))}>{array1.at(i)}</HoursButton>
+                                                </li>
+                                            ))
+                                        }</ListOfHours>
+                                    ) : null}
+                            </ButEx>
                             <EventBody
                                 value={event.description}
                                 onChange={e => changeEventHandler(e.target.value, 'description')}

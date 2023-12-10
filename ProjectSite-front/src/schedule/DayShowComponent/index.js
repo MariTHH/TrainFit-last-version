@@ -170,11 +170,24 @@ export const DayShowComponent = ({
                 {
                     selectedEvent ? (
                         <div>
-                            <EventTitle
-                                value={selectedEvent.title}
-                                onChange={e => changeEventHandler(e.target.value, 'title')}
-                                placeholder="Title"
-                            />
+                            <ButEx>
+                                <button
+                                        onClick={() => setExercisesPicker(prevState => !prevState)}>{`${selectedEvent.exercise}`}</button>
+                                    {
+                                        exercisesPicker ? (
+                                            <ListOfHours>{
+                                                [...new Array(array1.length)].map((_, i) => (
+                                                    <li>
+                                                        <HoursButton
+                                                            onClick={() => {
+                                                                addExercise(array1.at(i))
+                                                            }}>{array1.at(i)}</HoursButton>
+                                                    </li>
+                                                ))
+                                            }</ListOfHours>
+                                        ) : null}
+
+                            </ButEx>
                             <SelectEventTimeWrapper>
                                 <PositionRelative>
                                     <button>{moment.unix(+selectedEvent.date).format('dddd, D MMMM')} </button>
@@ -204,20 +217,6 @@ export const DayShowComponent = ({
                                 onChange={e => changeEventHandler(e.target.value, 'description')}
                                 placeholder="Description"
                             />
-                            <div>
-                                <button onClick={() => setExercisesPicker(prevState => !prevState)}>Exercises</button>
-                                {
-                                    exercisesPicker ? (
-                                        <ListOfHours>{
-                                            [...new Array(array1.length)].map((_, i) => (
-                                                <li>
-                                                    <HoursButton
-                                                        onClick={() => addExercise(array1.at(i))}>{array1.at(i)}</HoursButton>
-                                                </li>
-                                            ))
-                                        }</ListOfHours>
-                                    ) : null}
-                            </div>
                             <ButtonsWrapper>
                                 <ButtonWrapper onClick={cancelButtonHandler}>Cancel</ButtonWrapper>
                                 <ButtonWrapper onClick={eventFetchHandler}>{method}</ButtonWrapper>
