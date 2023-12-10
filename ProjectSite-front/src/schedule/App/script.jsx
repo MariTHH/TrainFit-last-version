@@ -106,7 +106,7 @@ const defaultEvent = {
     title: '',
     description: '',
     date: moment().format('X'),
-    exercise: ""
+    exercise: "Exercise"
 
 }
 const ButEx = styled('div')`

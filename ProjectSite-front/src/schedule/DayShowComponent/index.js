@@ -97,7 +97,11 @@ const HoursButton = styled('button')`
   background-color: unset;
   cursor: pointer;
 `;
-
+const ButEx = styled('div')`
+    position: relative;
+    left: 210px;
+    top: 30px;
+`;
 
 export const DayShowComponent = ({
                                      events,
