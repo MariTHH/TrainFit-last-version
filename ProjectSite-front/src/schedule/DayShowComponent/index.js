@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {isDayContainCurrentEvent} from "../helpers";
+import React, {useEffect, useState} from "react";
+import {isDayContainCurrentEvent, isDayContainCurrentTimestamp} from "../helpers";
 import styled from "styled-components"
 import {
     EventBody,
@@ -102,6 +102,14 @@ const ButEx = styled('div')`
     left: 210px;
     top: 30px;
 `;
+const RedLine= styled('div')`
+    background-color: red;
+    height: 1px;
+    position:absolute;
+    left:0;
+    right:0;
+    top:${props => props.position}%;
+`
 
 export const DayShowComponent = ({
                                      events,
@@ -137,11 +145,24 @@ export const DayShowComponent = ({
         setExercisesPicker(false);
         changeEventHandler(i, 'exercise');
     }
+    const getRedLinePosition = () => ((moment().format('X')-today.format('X'))/86400)*100;
+    const [, setCounter] = useState(0);
+    useEffect(() =>{
+        const timerId = setInterval(() =>{
+            setCounter(prevState => prevState + 1);
+        },1000);
+        return () => clearInterval(timerId);
+    }, [])
 
     return (
         <DayShowWrapper>
             <EventsListWrapper>
                 <ScaleWrapper>
+                    {
+                        isDayContainCurrentTimestamp(moment().format('X'),today) ? (
+                            <RedLine position={getRedLinePosition()} />
+                        ) : null
+                    }
                     {
                         cells.map((eventList, i) => (
                             <ScaleCellWrapper>
