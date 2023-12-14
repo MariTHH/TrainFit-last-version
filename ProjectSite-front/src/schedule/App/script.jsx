@@ -8,6 +8,7 @@ import AppSchedule from "../../components/appSchedule/script";
 import {useNavigate} from "react-router-dom";
 import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
 import {DayShowComponent} from "../DayShowComponent";
+import store from "../../store";
 
 const ShadowWrapper = styled('div')`
   min-width: 850px;
@@ -105,6 +106,7 @@ const totalDays = 42;
 const defaultEvent = {
     title: '',
     description: '',
+    login: store.getLogin(),
     date: moment().format('X'),
     exercise: "Exercise"
 
@@ -140,8 +142,9 @@ function Schedule() {
     const [events, setEvents] = useState([]);
     const startDateQuery = startDay.clone().format('X');
     const endDateQuery = today.clone().add(totalDays, 'days').format('X');
+    const currLogin = store.getLogin();
     useEffect(() => {
-        fetch(`${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
+        fetch(`${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}&login=${currLogin}`)
             .then(res => res.json())
             .then(res => {
                 console.log(res);

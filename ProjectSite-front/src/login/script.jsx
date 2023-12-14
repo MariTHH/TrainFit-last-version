@@ -8,7 +8,6 @@ import localStorage from "mobx-localstorage";
 
 function LogIn() {
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
 
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -52,6 +51,8 @@ function LogIn() {
                 popupMessage(UNAUTHORIZED_ERROR);
             } else if (response.statusText === 'Bad Request') {
                 popupMessage(BAD_REQUEST_ERROR);
+            } else if (response.statusText === 'Internal Server Error') {
+                popupMessage(UNAUTHORIZED_ERROR);
             } else {
                 popupMessage(UNKNOWN_ERROR);
             }
@@ -70,11 +71,16 @@ function LogIn() {
                     store.setPassword(newPassword);
                     localStorage.setItem("login", store.getLogin())
                     return response.json()
+                } else {
+                    return response.statusText === "Unauthorized";
                 }
-            }).then(function(data) {
-                localStorage.setItem("weight", data.weight);
-                localStorage.setItem("sex", data.sex);
-                navigate("/profilepage");
+            }).then(function (data) {
+                if (data !== false) {
+                    localStorage.setItem("weight", data.weight);
+                    localStorage.setItem("sex", data.sex);
+                    navigate("/profilepage");
+                }
+
             })
         }
     }

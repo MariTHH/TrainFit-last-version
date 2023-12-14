@@ -3,93 +3,26 @@
     {
       "id": 1,
       "title": "Test1",
+      "login": "a",
       "description": "Test test",
-      "exersize": "",
+      "exercise": "planka",
       "date": 1701493779
-    },
-    {
-      "id": 2,
-      "title": "Test2",
-      "description": "Test2",
-      "date": 1701559583
-    },
-    {
-      "title": "new",
-      "description": "new",
-      "date": "1701677562",
-      "id": 3
-    },
-    {
-      "title": "new",
-      "description": "new",
-      "date": "1701677562",
-      "id": 4
-    },
-    {
-      "title": "1",
-      "description": "",
-      "date": "1701810000",
-      "id": 5
-    },
-    {
-      "title": "5",
-      "description": "",
-      "date": "1701810000",
-      "id": 9
-    },
-    {
-      "title": "23",
-      "description": "",
-      "date": "1701810000",
-      "id": 10
-    },
-    {
-      "title": "",
-      "description": "",
-      "date": "1702069200",
-      "id": 11
     },
     {
       "title": "a",
       "description": "a",
+      "login": "user123",
       "date": "1702069200",
       "exercise": "press",
       "id": 12
     },
     {
-      "title": "a",
-      "description": "a",
-      "date": "1702072800",
-      "exercise": "s",
-      "id": 13
-    },
-    {
       "title": "",
-      "description": "a",
-      "date": "1701896400",
-      "exercise": "press",
-      "id": 14
-    },
-    {
-      "title": "",
-      "description": "",
-      "date": "1702162800",
-      "exercise": "otjimanie",
-      "id": 15
-    },
-    {
-      "title": "",
-      "description": "",
-      "date": "1701982800",
-      "exercise": "press",
-      "id": 16
-    },
-    {
-      "title": "",
-      "description": "",
+      "description": "3",
+      "login": "user123",
       "date": "1702501200",
-      "exercise": "running",
-      "id": 17
+      "exercise": "otjimanie",
+      "id": 13
     }
   ]
 }

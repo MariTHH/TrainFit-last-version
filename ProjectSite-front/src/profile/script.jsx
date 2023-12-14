@@ -51,15 +51,6 @@ function Profile() {
     const dropThis = () => {
         view()
     }
-    function popupMessage(message) {
-        toast(message, {
-            style: {
-                borderRadius: '10px',
-                color: 'rgb(4, 30, 55)',
-                background: 'rgb(255, 255, 255, 80%)'
-            }
-        })
-    }
 
     function sendParams() {
         let formData = new FormData();
