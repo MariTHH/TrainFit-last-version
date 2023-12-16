@@ -8,7 +8,8 @@ import AppSchedule from "../../components/appSchedule/script";
 import {useNavigate} from "react-router-dom";
 import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
 import {DayShowComponent} from "../DayShowComponent";
-import store from "../../store";
+import localStorage from "mobx-localstorage";
+import {Button1Wrapper} from "../containers/StyledComponents";
 
 const ShadowWrapper = styled('div')`
   min-width: 850px;
@@ -106,7 +107,7 @@ const totalDays = 42;
 const defaultEvent = {
     title: '',
     description: '',
-    login: store.getLogin(),
+    login: localStorage.getItem("login"),
     date: moment().format('X'),
     exercise: "Exercise"
 
@@ -117,8 +118,7 @@ const ButEx = styled('div')`
     top: 0px;
     padding: 8px 14px;
     background-color: white;
-    border-bottom: inherit;
-    border-bottom-color: cornflowerblue;
+    border-bottom: 1px solid #464648;
 `;
 
 function Schedule() {
@@ -142,7 +142,7 @@ function Schedule() {
     const [events, setEvents] = useState([]);
     const startDateQuery = startDay.clone().format('X');
     const endDateQuery = today.clone().add(totalDays, 'days').format('X');
-    const currLogin = store.getLogin();
+    const currLogin = localStorage.getItem('login');
     useEffect(() => {
         fetch(`${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}&login=${currLogin}`)
             .then(res => res.json())
@@ -223,7 +223,7 @@ function Schedule() {
                     <FormPositionWrapper onClick={cancelButtonHandler}>
                         <FormWrapper onClick={e => e.stopPropagation()}>
                             <ButEx>
-                                <button onClick={() => setExercisesPicker(prevState => !prevState)}>{`${event.exercise}`}</button>
+                                <Button1Wrapper onClick={() => setExercisesPicker(prevState => !prevState)}>{`${event.exercise}`}</Button1Wrapper>
                                 {
                                     exercisesPicker ? (
                                         <ListOfHours>{
@@ -242,8 +242,8 @@ function Schedule() {
                                 placeholder="Description"
                             />
                             <ButtonsWrapper>
-                                <ButtonWrapper onClick={cancelButtonHandler}>Cancel</ButtonWrapper>
-                                <ButtonWrapper onClick={eventFetchHandler}>{method}</ButtonWrapper>
+                                <Button1Wrapper onClick={cancelButtonHandler}>Cancel</Button1Wrapper>
+                                <Button1Wrapper onClick={eventFetchHandler}>{method}</Button1Wrapper>
                                 {
                                     method === 'Update' ? (
                                         <ButtonWrapper danger onClick={removeEventHandler}>Remove</ButtonWrapper>

@@ -75,7 +75,9 @@ export const CalendarCell = ({dayItem, today, openFormHandler, events, setDispla
                     {
                         events.length > 0 ? (
                             <div key={"Show day"}>
-                                <EventItemWrapperButton onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}>
+                                <EventItemWrapperButton onClick={() => {
+                                    setDisplayMode(DISPLAY_MODE_DAY);
+                                }}>
                                     show day
                                 </EventItemWrapperButton>
                             </div>

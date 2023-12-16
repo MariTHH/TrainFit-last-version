@@ -79,11 +79,51 @@ export const ButtonsWrapper = styled('div')`
 `;
 
 export const ButtonWrapper = styled('button')`
-  color: ${props => props.danger ? '#f00' : '#27282A'};
+  color: ${props => props.danger ? '#f00' : 'black'};
   border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
   border-radius: 2px;
   cursor: pointer;
   &:not(:last-child){
     margin-right: 2px;
   }
+  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin: 10px;
+    width: 80px;
+    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+    background: lightblue;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+    box-shadow: 0 10px 40px 0 lightblue;
+    &:hover {
+       background: skyblue;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 skyblue;
+  }
 `;
+export const Button1Wrapper = styled('button')`
+  color: black;
+  border: 1px solid #27282A;
+  cursor: pointer;
+  height:34px;
+  margin:1px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: lightblue;
+   &:hover {
+       background: skyblue;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 skyblue;
+  }
+ 
+
+`;
+

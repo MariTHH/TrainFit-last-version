@@ -8,7 +8,7 @@ import {
     EventListWrapper,
     EventTitle,
     ButtonsWrapper,
-    ButtonWrapper
+    ButtonWrapper, Button1Wrapper
 } from "../containers/StyledComponents";
 import {ITEMS_PER_DAY} from "../helpers/constants";
 import moment from "moment";
@@ -44,6 +44,7 @@ const ScaleWrapper = styled('div')`
   flex-direction: column;
   padding: 0 4px;
   position: relative;
+ 
 `;
 
 const ScaleCellWrapper = styled('div')`
@@ -87,6 +88,17 @@ const ListOfHours = styled('ul')`
   left: 2px;
   background-color: rgb(239, 239, 239);
 `;
+const ListOfEx = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  overflow-y: scroll;
+  color: #000;
+  position: absolute;
+  left: 2px;
+  background-color: rgb(239, 239, 239);
+`;
 
 const PositionRelative = styled('div')`
   position: relative;
@@ -96,11 +108,6 @@ const HoursButton = styled('button')`
   border: none;
   background-color: unset;
   cursor: pointer;
-`;
-const ButEx = styled('div')`
-    position: relative;
-    left: 210px;
-    top: 30px;
 `;
 const RedLine= styled('div')`
     background-color: red;
@@ -195,32 +202,15 @@ export const DayShowComponent = ({
                 {
                     selectedEvent ? (
                         <div>
-                            <ButEx>
-                                <button
-                                        onClick={() => setExercisesPicker(prevState => !prevState)}>{`${selectedEvent.exercise}`}</button>
-                                    {
-                                        exercisesPicker ? (
-                                            <ListOfHours>{
-                                                [...new Array(array1.length)].map((_, i) => (
-                                                    <li>
-                                                        <HoursButton
-                                                            onClick={() => {
-                                                                addExercise(array1.at(i))
-                                                            }}>{array1.at(i)}</HoursButton>
-                                                    </li>
-                                                ))
-                                            }</ListOfHours>
-                                        ) : null}
-
-                            </ButEx>
                             <SelectEventTimeWrapper>
+
                                 <PositionRelative>
-                                    <button>{moment.unix(+selectedEvent.date).format('dddd, D MMMM')} </button>
+                                    <Button1Wrapper>{moment.unix(+selectedEvent.date).format('dddd, D MMMM')} </Button1Wrapper>
                                 </PositionRelative>
 
                                 <PositionRelative>
-                                    <button
-                                        onClick={() => setShowTimePicker(prevState => !prevState)}>{moment.unix(+selectedEvent.date).format('HH:mm')} </button>
+                                    <Button1Wrapper
+                                        onClick={() => setShowTimePicker(prevState => !prevState)}>{moment.unix(+selectedEvent.date).format('HH:mm')} </Button1Wrapper>
 
 
                                     {
@@ -235,6 +225,23 @@ export const DayShowComponent = ({
                                             }</ListOfHours>
                                         ) : null
                                     }
+                                </PositionRelative>
+                                <PositionRelative>
+                                    <Button1Wrapper
+                                        onClick={() => setExercisesPicker(prevState => !prevState)}>{`${selectedEvent.exercise}`}</Button1Wrapper>
+                                    {
+                                        exercisesPicker ? (
+                                            <ListOfEx>{
+                                                [...new Array(array1.length)].map((_, i) => (
+                                                    <li>
+                                                        <HoursButton
+                                                            onClick={() => {
+                                                                addExercise(array1.at(i))
+                                                            }}>{array1.at(i)}</HoursButton>
+                                                    </li>
+                                                ))
+                                            }</ListOfEx>
+                                        ) : null}
                                 </PositionRelative>
                             </SelectEventTimeWrapper>
                             <EventBody
@@ -255,8 +262,8 @@ export const DayShowComponent = ({
                     ) : (
                         <>
                             <div>
-                                <button onClick={() => openFormHandler('Create', null, today)}> Create
-                                </button>
+                                <ButtonWrapper onClick={() => openFormHandler('Create', null, today)}> Create
+                                </ButtonWrapper>
                             </div>
                             <NoEventMsg>No event selected</NoEventMsg>
                         </>
