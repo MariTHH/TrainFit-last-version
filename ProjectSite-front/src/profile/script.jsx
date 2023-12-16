@@ -82,7 +82,6 @@ function Profile() {
                 </div>
             </div>
             <div className="user-info">
-                <div className="user-info-name" id="name"></div>
                 <div className="user-info-avatar" id="avatar">
                     <img className="user-info-avatar" src={img} alt="avatar"/>
                 </div>
@@ -103,6 +102,7 @@ function Profile() {
             <div className="back-button" onClick={() => navigate('/')}>
                 <a>Back</a>
             </div>
+            <div className="user-info-name">{localStorage.getItem('login')}</div>
 
             <div className="profileBox" id={"profileBox"}>
                 <input className="username" id={"username"} type="text" placeholder={"username"} value={username}

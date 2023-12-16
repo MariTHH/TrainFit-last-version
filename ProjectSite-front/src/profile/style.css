@@ -12,7 +12,23 @@
 }
 
 .user-info-name {
-    width: 100px;
+    color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-left: 104px;
+    margin-top: 40px;
+    top: 190px;
+    font-size: 2vw;
+    line-height: 2vw;
+    width: 150px;
+    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+    background-color: cornflowerblue;
 
 }
 
@@ -95,14 +111,13 @@
 }
 
 .profileBox, .scheduleBox {
-
     display: none;
     width: 1050px;/*1100*/
     height: 700px;
     border: 3px solid cornflowerblue;
     border-radius: 10%;
     background: lightcyan;
-    margin: -110px auto auto 350px;
+    margin: -190px auto auto 350px;
     box-shadow: 17px 20px 11px 4px rgba(0, 0, 0, 0.3);
 }
 
