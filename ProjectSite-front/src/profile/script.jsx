@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
-import toast from "react-hot-toast";
 
 function Profile() {
     const navigate = useNavigate();
@@ -64,13 +63,13 @@ function Profile() {
             body: formData
         })
             .then(response => {
-            store.setWeight(weight);
-            store.setSex(sex);
-            localStorage.setItem("login", username);
-            store.setLogin(username)
-            localStorage.setItem("weight", store.getWeight());
-            localStorage.setItem("sex", sex);
-        })
+                store.setWeight(weight);
+                store.setSex(sex);
+                localStorage.setItem("login", username);
+                store.setLogin(username)
+                localStorage.setItem("weight", store.getWeight());
+                localStorage.setItem("sex", sex);
+            })
 
     }
 

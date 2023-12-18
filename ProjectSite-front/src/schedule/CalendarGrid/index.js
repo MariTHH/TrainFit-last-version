@@ -1,16 +1,8 @@
 import React from "react";
-import styled from 'styled-components';
 import {CalendarGridHeader} from "../CalendarGridHeader";
 import {MonthDaysList} from "../MonthDaysList";
+import {GridWrapper} from "../containers/StyledComponents";
 
-const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 1px;
-  background-color:${props => props.isHeader ? '#FFFFFF' : '#E5E5E5'};
-  ${props => props.isHeader && 'border-bottom: 1px solid #E5E5E5'}
-    `
-;
 const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler, setDisplayMode}) => {
 
     return (

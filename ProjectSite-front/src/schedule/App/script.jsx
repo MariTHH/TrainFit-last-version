@@ -9,66 +9,15 @@ import {useNavigate} from "react-router-dom";
 import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
 import {DayShowComponent} from "../DayShowComponent";
 import localStorage from "mobx-localstorage";
-import {Button1Wrapper} from "../containers/StyledComponents";
+import {
+    ButEx,
+    Button1Wrapper, EventBody,
+    FormPositionWrapper,
+    FormWrapper, HoursButton,
+    ListOfHours,
+    ShadowWrapper
+} from "../containers/StyledComponents";
 
-const ShadowWrapper = styled('div')`
-  min-width: 850px;
-
-  border-top: 1px solid #C5C5C5;
-  border-left: 1px solid #B5B7B9;
-  border-right: 1px solid #B5B7B9;
-  border-bottom: 2px solid #A4A5A7;
-  border-radius: 8px;
-  overflow:hidden;
-  box-shadow: 0 0 0 1px #CACACA, 0 8px 20px 6px #D5D5D5;
-  display: flex;
-  flex-direction: column;
-`;
-const FormPositionWrapper = styled('div')`
-  position: absolute;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.35);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const FormWrapper = styled(ShadowWrapper)`
-  width: 320px;
-  min-width: 320px;
-  height: 132px;
-  background-color: #1E1F21;
-  color: #DDDDDD;
-  box-shadow:unset;
-`;
-
-const EventTitle = styled('input')`
-  padding: 8px 14px;
-  font-size: .85rem;
-  width: 100%;
-  border: unset;
-  background-color: #FFFFFF;
-  color: #000000;
-  outline: unset;
-  border-bottom: 1px solid #464648;
-`;
-
-const EventBody = styled('textarea')`
-  padding: 8px 14px;
-  font-size: .85rem;
-  width: 100%;
-  border: unset;
-  background-color: #FFFFFF;
-  color: #000000;
-  outline: unset;
-  border-bottom: 1px solid #464648;
-  resize:none;
-  height: 60px;
-`;
 export const ButtonsWrapper = styled('div')`
   padding: 8px 14px;
   display: flex;
@@ -85,23 +34,6 @@ export const ButtonWrapper = styled('button')`
     margin-right: 2px;
   }
 `;
-const ListOfHours = styled('ul')`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height: 60px;
-  overflow-y: scroll;
-  color: #000;
-  position: absolute;
-  left: 2px;
-  background-color: rgb(239, 239, 239);
-`;
-
-const HoursButton = styled('button')`
-  border: none;
-  background-color: unset;
-  cursor: pointer;
-`;
 const url = 'http://localhost:3001';
 const totalDays = 42;
 const defaultEvent = {
@@ -112,14 +44,7 @@ const defaultEvent = {
     exercise: "Exercise"
 
 }
-const ButEx = styled('div')`
-    position: relative;
-    left: 0px;
-    top: 0px;
-    padding: 8px 14px;
-    background-color: white;
-    border-bottom: 1px solid #464648;
-`;
+
 
 function Schedule() {
     const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
@@ -223,7 +148,8 @@ function Schedule() {
                     <FormPositionWrapper onClick={cancelButtonHandler}>
                         <FormWrapper onClick={e => e.stopPropagation()}>
                             <ButEx>
-                                <Button1Wrapper onClick={() => setExercisesPicker(prevState => !prevState)}>{`${event.exercise}`}</Button1Wrapper>
+                                <Button1Wrapper
+                                    onClick={() => setExercisesPicker(prevState => !prevState)}>{`${event.exercise}`}</Button1Wrapper>
                                 {
                                     exercisesPicker ? (
                                         <ListOfHours>{

@@ -8,74 +8,26 @@ import {
     EventListWrapper,
     EventTitle,
     ButtonsWrapper,
-    ButtonWrapper, Button1Wrapper
+    ButtonWrapper,
+    Button1Wrapper,
+    EventsListWrapper,
+    ScaleWrapper,
+    RedLine,
+    DayShowWrapper,
+    ScaleCellWrapper,
+    ScaleCellTimeWrapper,
+    ScaleCellEventWrapper,
+    EventItemButton,
+    EventFormWrapper,
+    SelectEventTimeWrapper,
+    PositionRelative, ListOfEx, NoEventMsg
 } from "../containers/StyledComponents";
 import {ITEMS_PER_DAY} from "../helpers/constants";
 import moment from "moment";
-
-const DayShowWrapper = styled('div')`
-  display: flex;
-  flex-grow: 1;
-  border-top: 1px solid #464648;;
-`;
-
-const EventsListWrapper = styled('div')`
-  background-color: #FFFFFF;
-  color: black;
-  flex-grow: 1;
-`;
-const EventFormWrapper = styled('div')`
-  background-color: #dddddd;
-  color: black;
-  width: 300px;
-  position: relative;
-  border-left: 1px solid #464648;;
-`;
-const NoEventMsg = styled('div')`
-  color: #565759;
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%,-50%);
-`;
-const ScaleWrapper = styled('div')`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 4px;
-  position: relative;
- 
-`;
-
-const ScaleCellWrapper = styled('div')`
-  flex-grow: 1;
-  position: relative;
-  &:not(:last-child){
-    border-bottom: 1px solid #464648;
-  }
-  margin-left: 32px;
-`;
-
-const ScaleCellTimeWrapper = styled('div')`
-  position: absolute;
-  left: -26px;
-  top: -6px;
-  font-size: 8px;
-`;
-
-const ScaleCellEventWrapper = styled('div')`
-  min-height: 20px;
-`;
-const EventItemButton = styled(EventItemWrapper)`
-    min-width: 50px;
-    width: unset;
-    margin-left: 4px;
-`
-
-const SelectEventTimeWrapper = styled('div')`
-  padding: 8px 14px;
-  border-bottom: 1px solid #464648;
-  display: flex;
+const HoursButton = styled('button')`
+  border: none;
+  background-color: unset;
+  cursor: pointer;
 `;
 const ListOfHours = styled('ul')`
   list-style-type: none;
@@ -88,36 +40,6 @@ const ListOfHours = styled('ul')`
   left: 2px;
   background-color: rgb(239, 239, 239);
 `;
-const ListOfEx = styled('ul')`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  height: 60px;
-  overflow-y: scroll;
-  color: #000;
-  position: absolute;
-  left: 2px;
-  background-color: rgb(239, 239, 239);
-`;
-
-const PositionRelative = styled('div')`
-  position: relative;
-`;
-
-const HoursButton = styled('button')`
-  border: none;
-  background-color: unset;
-  cursor: pointer;
-`;
-const RedLine= styled('div')`
-    background-color: red;
-    height: 1px;
-    position:absolute;
-    left:0;
-    right:0;
-    top:${props => props.position}%;
-`
-
 export const DayShowComponent = ({
                                      events,
                                      today,
