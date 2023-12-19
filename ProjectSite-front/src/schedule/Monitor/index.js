@@ -22,9 +22,13 @@ const TodayButton = styled(ButtonWrapper)`
 	font-weight: bold;
 `;
 
-function ButtonsCenterWrapper(props) {
-    return null;
-}
+const ButtonsCenterWrapper = styled(ButtonsWrapper)`
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+`;
+
 
 const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode}) => {
     return (

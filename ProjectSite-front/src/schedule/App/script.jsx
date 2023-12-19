@@ -67,8 +67,8 @@ function Schedule() {
     const [events, setEvents] = useState([]);
     const startDateQuery = startDay.clone().format('X');
     const endDateQuery = today.clone().add(totalDays, 'days').format('X');
-    const currLogin = localStorage.getItem('login');
     useEffect(() => {
+        const currLogin = localStorage.getItem('login');
         fetch(`${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}&login=${currLogin}`)
             .then(res => res.json())
             .then(res => {
@@ -136,7 +136,7 @@ function Schedule() {
 
     }
     const [exercisesPicker, setExercisesPicker] = useState(false);
-    const array1 = ["press", "running", "planka", "otjimanie"];
+    const array1 = ["press", "running", "plank", "push up"];
     const addExercise = (i) => {
         setExercisesPicker(false);
         changeEventHandler(i, 'exercise');
