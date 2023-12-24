@@ -16,7 +16,7 @@ import {
     FormPositionWrapper,
     FormWrapper, HoursButton,
     ListOfHours,
-    ShadowWrapper
+    ShadowWrapper, TextWrapper, TextWrapperSignIn
 } from "../containers/StyledComponents";
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
 import DateTimePicker from 'react-datetime-picker';
@@ -168,6 +168,9 @@ function Schedule() {
         }
     }
 
+    async function signOut() {
+        await supabase.auth.signOut();
+    }
     async function createCalendarEvent(eventName, eventDescription, eventDate) {
         const date = new Date(eventDate * 1000);
         const dateString = date.toISOString();
@@ -192,13 +195,21 @@ function Schedule() {
             return data.json();
         }).then((data) => {
             console.log(data);
-            alert("Event created, check your Google Calendar!");
         });
     }
 
     return (
         <>
-            <ButtonWrapperSignIn onClick={() => googleSignIn()}>Sign In With Google</ButtonWrapperSignIn>
+                    {session ?
+                        <>
+                            <TextWrapperSignIn>Hey there {session.user.email}</TextWrapperSignIn>
+                            <ButtonWrapperSignIn onClick={() => signOut()}>Sign Out</ButtonWrapperSignIn>
+                        </>
+                        :
+                        <>
+                            <ButtonWrapperSignIn onClick={() => googleSignIn()}>Sign In With Google</ButtonWrapperSignIn>
+                        </>
+                    }
             {
                 isShowForm ? (
                     <FormPositionWrapper onClick={cancelButtonHandler}>

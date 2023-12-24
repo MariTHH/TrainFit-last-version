@@ -344,7 +344,7 @@ export const ButtonWrapperSignIn = styled('button')`
   cursor: pointer;
   height:34px;
   margin:1px;
-  margin-left: 643px;
+  margin-left: 1067px;
   border-radius: 10px;
   cursor: pointer;
   background: lightblue;
@@ -356,4 +356,10 @@ export const ButtonWrapperSignIn = styled('button')`
   }
  
 
+`;
+
+export const TextWrapperSignIn = styled('span')`
+  font-size: 20px;
+  color: #fefefe;
+  
 `;
