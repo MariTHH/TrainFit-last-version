@@ -11,12 +11,14 @@ import {DayShowComponent} from "../DayShowComponent";
 import localStorage from "mobx-localstorage";
 import {
     ButEx,
-    Button1Wrapper, EventBody,
+    Button1Wrapper, ButtonWrapperSignIn, EventBody,
     FormPositionWrapper,
     FormWrapper, HoursButton,
     ListOfHours,
     ShadowWrapper
 } from "../containers/StyledComponents";
+import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
+import DateTimePicker from 'react-datetime-picker';
 
 export const ButtonsWrapper = styled('div')`
   padding: 8px 14px;
@@ -30,7 +32,8 @@ export const ButtonWrapper = styled('button')`
   border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
   border-radius: 2px;
   cursor: pointer;
-  &:not(:last-child){
+
+  &:not(:last-child) {
     margin-right: 2px;
   }
 `;
@@ -115,7 +118,9 @@ function Schedule() {
     const eventFetchHandler = () => {
         const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
-
+        if (method === 'Create') {
+            createCalendarEvent(event.exercise, event.description, event.date);
+        }
         fetch(fetchUrl, {
                 method: httpMethod,
                 headers: {
@@ -141,8 +146,58 @@ function Schedule() {
         setExercisesPicker(false);
         changeEventHandler(i, 'exercise');
     }
+    const session = useSession(); // tokens, when session exists we have a user
+    const supabase = useSupabaseClient(); // talk to supabase!
+    const {isLoading} = useSessionContext();
+
+    if (isLoading) {
+        return <></>
+    }
+
+    async function googleSignIn() {
+        const {error} = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                scopes: 'https://www.googleapis.com/auth/calendar'
+            }
+        });
+        if (error) {
+            alert("Error logging in to Google provider with Supabase");
+            console.log(error);
+        }
+    }
+
+    async function createCalendarEvent(eventName, eventDescription, eventDate) {
+        const date = new Date(eventDate * 1000);
+        const dateString = date.toISOString();
+        console.log(dateString);
+        const event = {
+            'summary': eventName,
+            'description': eventDescription,
+            'start': {
+                'dateTime': dateString
+            },
+            'end': {
+                'dateTime': dateString
+            }
+        }
+        await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events", {
+            method: "POST",
+            headers: {
+                'Authorization': 'Bearer ' + session.provider_token // Access token for google
+            },
+            body: JSON.stringify(event)
+        }).then((data) => {
+            return data.json();
+        }).then((data) => {
+            console.log(data);
+            alert("Event created, check your Google Calendar!");
+        });
+    }
+
     return (
         <>
+            <ButtonWrapperSignIn onClick={() => googleSignIn()}>Sign In With Google</ButtonWrapperSignIn>
             {
                 isShowForm ? (
                     <FormPositionWrapper onClick={cancelButtonHandler}>

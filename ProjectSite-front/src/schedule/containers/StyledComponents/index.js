@@ -338,3 +338,22 @@ export const TitleWrapper = styled(TextWrapper)`
   margin-right: 8px;
   margin-left: 8px;
 `;
+export const ButtonWrapperSignIn = styled('button')`
+  color: black;
+  border: 1px solid #27282A;
+  cursor: pointer;
+  height:34px;
+  margin:1px;
+  margin-left: 643px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: lightblue;
+   &:hover {
+       background: skyblue;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 skyblue;
+  }
+ 
+
+`;
