@@ -4,6 +4,7 @@ import AppBody from "../../components/appBody/script";
 import LogIn from "../../login/script";
 import Content from "../../content/script";
 
+
 function MainPage() {
 
 
