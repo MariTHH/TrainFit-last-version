@@ -12,7 +12,7 @@ import localStorage from "mobx-localstorage";
 
 import {
     ButEx,
-    Button1Wrapper, ButtonWrapperSignIn, EventBody,
+    Button1Wrapper, ButtonWrapperSignIn, ButtonWrapperSignOut, EventBody,
     FormPositionWrapper,
     FormWrapper, HoursButton,
     ListOfHours,
@@ -203,7 +203,7 @@ function Schedule() {
                     {session ?
                         <>
                             <TextWrapperSignIn>Hey there {session.user.email}</TextWrapperSignIn>
-                            <ButtonWrapperSignIn onClick={() => signOut()}>Sign Out</ButtonWrapperSignIn>
+                            <ButtonWrapperSignOut onClick={() => signOut()}>Sign Out</ButtonWrapperSignOut>
                         </>
                         :
                         <>

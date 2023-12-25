@@ -344,7 +344,8 @@ export const ButtonWrapperSignIn = styled('button')`
   cursor: pointer;
   height:34px;
   margin:1px;
-  margin-left: 1067px;
+  margin-left: 655px;
+  margin-top: 22px;
   border-radius: 10px;
   cursor: pointer;
   background: lightblue;
@@ -362,4 +363,25 @@ export const TextWrapperSignIn = styled('span')`
   font-size: 20px;
   color: #fefefe;
   
+`;
+
+export const ButtonWrapperSignOut = styled('button')`
+  color: black;
+  border: 1px solid #27282A;
+  cursor: pointer;
+  height:34px;
+  margin:1px;
+  margin-left: 360px;
+  margin-top: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: lightblue;
+   &:hover {
+       background: skyblue;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 skyblue;
+  }
+ 
+
 `;
