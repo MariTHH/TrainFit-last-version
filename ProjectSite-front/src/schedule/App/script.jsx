@@ -121,6 +121,7 @@ function Schedule() {
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
         if (method === 'Create') {
             createCalendarEvent(event.exercise, event.description, event.date);
+            getStepCountFromGoogleFit()
         }
         fetch(fetchUrl, {
                 method: httpMethod,
@@ -171,6 +172,7 @@ function Schedule() {
     async function signOut() {
         await supabase.auth.signOut();
     }
+
     async function createCalendarEvent(eventName, eventDescription, eventDate) {
         const date = new Date(eventDate * 1000);
         const dateString = date.toISOString();
@@ -198,18 +200,69 @@ function Schedule() {
         });
     }
 
+    async function googleFitSignIn() {
+        const {error} = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                scopes: 'https://www.googleapis.com/auth/fitness.activity.read'
+            }
+        });
+        if (error) {
+            alert("Error logging in to Google Fit provider with Supabase");
+            console.log(error);
+        }
+    }
+
+    async function getStepCountFromGoogleFit() {
+        try {
+            const now = new Date();
+            const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+            const startOfDayUnix = startOfDay.getTime();
+            const endOfDayUnix = endOfDay.getTime();
+            console.log(endOfDayUnix)
+
+
+            const requestBody = {
+                "aggregateBy": [{
+                    "dataTypeName": "com.google.step_count.delta",
+                    "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+                }],
+                "bucketByTime": {"durationMillis": 86400000},
+                "startTimeMillis": startOfDayUnix,
+                "endTimeMillis": endOfDayUnix
+            };
+
+            await fetch("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate", {
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + session.provider_token, // Access token for Google
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            }).then((data) => {
+                return data.json();
+            }).then((data) => {
+                console.log(data);
+            });
+        } catch (error) {
+            console.error('Error fetching step count from Google Fit:', error);
+        }
+    }
+
+
     return (
         <>
-                    {session ?
-                        <>
-                            <TextWrapperSignIn>Hey there {session.user.email}</TextWrapperSignIn>
-                            <ButtonWrapperSignOut onClick={() => signOut()}>Sign Out</ButtonWrapperSignOut>
-                        </>
-                        :
-                        <>
-                            <ButtonWrapperSignIn onClick={() => googleSignIn()}>Sign In With Google</ButtonWrapperSignIn>
-                        </>
-                    }
+            {session ?
+                <>
+                    <TextWrapperSignIn>Hey there {session.user.email}</TextWrapperSignIn>
+                    <ButtonWrapperSignOut onClick={() => signOut()}>Sign Out</ButtonWrapperSignOut>
+                </>
+                :
+                <>
+                    <ButtonWrapperSignIn onClick={() => googleFitSignIn()}>Sign In With Google</ButtonWrapperSignIn>
+                </>
+            }
             {
                 isShowForm ? (
                     <FormPositionWrapper onClick={cancelButtonHandler}>

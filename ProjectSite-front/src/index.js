@@ -14,9 +14,13 @@ import store from "./store";
 import {createClient} from "@supabase/supabase-js";
 import {SessionContextProvider} from "@supabase/auth-helpers-react";
 
+// const supabase = createClient(
+//     "https://fxbpyinukyhtegakhafy.supabase.co",
+//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4YnB5aW51a3lodGVnYWtoYWZ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM0MzEzNjksImV4cCI6MjAxOTAwNzM2OX0.fOuPJ3OAQ4K8niTPOKpTtkFMhJbctT4kUd6YU26r88Q"
+// )
 const supabase = createClient(
-    "https://fxbpyinukyhtegakhafy.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4YnB5aW51a3lodGVnYWtoYWZ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM0MzEzNjksImV4cCI6MjAxOTAwNzM2OX0.fOuPJ3OAQ4K8niTPOKpTtkFMhJbctT4kUd6YU26r88Q"
+    "https://fxvqltmjtuocrqtajjqy.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4dnFsdG1qdHVvY3JxdGFqanF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDM2MDIzNzAsImV4cCI6MjAxOTE3ODM3MH0.ynaedO7VYFC0CounuWiOFs1hDfE4rHV0wqFi2Dt6WVU"
 )
 
 const router = createBrowserRouter(
