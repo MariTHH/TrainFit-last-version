@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
+import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
 
 function Profile() {
     const navigate = useNavigate();
@@ -72,6 +73,60 @@ function Profile() {
             })
 
     }
+    const supabase = useSupabaseClient(); // talk to supabase!
+    const {isLoading} = useSessionContext();
+
+    async function googleFitSignIn() {
+        const {error} = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                scopes: 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/fitness.activity.read',
+            }
+        });
+        if (error) {
+            alert("Error logging in to Google Fit provider with Supabase");
+            console.log(error);
+        }
+    }
+
+    const session = useSession();
+
+    async function getStepCountFromGoogleFit() {
+        try {
+            const now = new Date();
+            const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+            const startOfDayUnix = startOfDay.getTime();
+            const endOfDayUnix = endOfDay.getTime();
+            console.log(endOfDayUnix)
+
+
+            const requestBody = {
+                "aggregateBy": [{
+                    "dataTypeName": "com.google.step_count.delta",
+                    "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+                }],
+                "bucketByTime": {"durationMillis": 86400000},
+                "startTimeMillis": startOfDayUnix,
+                "endTimeMillis": endOfDayUnix
+            };
+
+            await fetch("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate", {
+                method: "POST",
+                headers: {
+                    'Authorization': 'Bearer ' + session.provider_token, // Access token for Google
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            }).then((data) => {
+                return data.json();
+            }).then((data) => {
+                console.log(data);
+            });
+        } catch (error) {
+            console.error('Error fetching step count from Google Fit:', error);
+        }
+    }
 
     return (
         <AppContainer>
@@ -98,11 +153,10 @@ function Profile() {
             </div>
             <div className="graph"></div>
             <div className="shed"></div>
-            <div className="back-button" onClick={() => navigate('/')}>
+            <div className="back-button" onClick={() => getStepCountFromGoogleFit()}>
                 <a>Back</a>
             </div>
             <div className="user-info-name">{localStorage.getItem('login')}</div>
-
             <div className="profileBox" id={"profileBox"}>
                 <input className="username" id={"username"} type="text" placeholder={"username"} value={username}
                        onChange={e => setUsername(e.target.value)}/>
@@ -126,8 +180,16 @@ function Profile() {
 
             </div>
             <div className="scheduleBox" id={"scheduleBox"}>
-
             </div>
+            {session ?
+                <>
+                    <div className="signIn">{session.user.email}</div>
+                </>
+                :
+                <>
+                    <div className="signIn" onClick={() => googleFitSignIn()}>Sign In With Google</div>
+                </>
+            }
         </AppContainer>
     );
 }
