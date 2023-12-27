@@ -7,6 +7,7 @@ import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
+import { CircularProgress } from '@mui/material'
 
 function Profile() {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ function Profile() {
     }
 
     const session = useSession();
-
+    let steps;
     async function getStepCountFromGoogleFit() {
         try {
             const now = new Date();
@@ -122,16 +123,26 @@ function Profile() {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                const steps = data.bucket[0].dataset[0].point[0].value[0].intVal;
+                steps = data.bucket[0].dataset[0].point[0].value[0].intVal;
                 console.log(steps)
-
                 }
             )
+            return steps
 
         } catch (error) {
             console.error('Error fetching step count from Google Fit:', error);
         }
     }
+    const [stepCount, setStepCount] = useState(null);
+    const handleButtonClick = async () => {
+        try {
+            const steps = await getStepCountFromGoogleFit(session);
+            setStepCount(steps);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     return (
         <AppContainer>
@@ -158,7 +169,7 @@ function Profile() {
             </div>
             <div className="graph"></div>
             <div className="shed"></div>
-            <div className="back-button" onClick={() => getStepCountFromGoogleFit()}>
+            <div className="back-button" onClick={() => navigate("/")}>
                 <a>Back</a>
             </div>
             <div className="user-info-name">{localStorage.getItem('login')}</div>
@@ -195,6 +206,7 @@ function Profile() {
                     <div className="signIn" onClick={() => googleFitSignIn()}>Sign In With Google</div>
                 </>
             }
+
         </AppContainer>
     );
 }
