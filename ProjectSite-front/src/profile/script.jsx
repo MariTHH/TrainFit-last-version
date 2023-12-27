@@ -73,6 +73,7 @@ function Profile() {
             })
 
     }
+
     const supabase = useSupabaseClient(); // talk to supabase!
     const {isLoading} = useSessionContext();
 
@@ -121,8 +122,12 @@ function Profile() {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                console.log(data);
-            });
+                const steps = data.bucket[0].dataset[0].point[0].value[0].intVal;
+                console.log(steps)
+
+                }
+            )
+
         } catch (error) {
             console.error('Error fetching step count from Google Fit:', error);
         }
