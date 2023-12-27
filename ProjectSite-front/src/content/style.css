@@ -78,14 +78,19 @@ img {
     }
 }
 .signIn{
+    position: absolute;
+    left: 60%;
+    top:190px;
+    transform: translateX(-50%);
+    justify-content: center;
     flex-direction: row;
     align-items: center;
     padding: 6px;
-    margin-bottom: 5px;
-    transition: all 0.2s ease;
+    /*margin-bottom: 5px;*/
+    /*transition: all 0.2s ease;*/
     cursor: pointer;
-    margin-top: 345px;
-    margin-left: 490px;
+    /*margin-top: 345px;*/
+    /*margin-left: 490px;*/
     font-size: 1.2vw;
     line-height: 1.5vw;
     transition-duration: 0.4s;

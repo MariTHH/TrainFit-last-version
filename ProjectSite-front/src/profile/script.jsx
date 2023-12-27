@@ -17,7 +17,6 @@ function Profile() {
     store.setLogin(localStorage.getItem("login"));
     store.setWeight(localStorage.getItem("weight"));
     store.setSex(localStorage.getItem("sex"));
-
     const goBack = () => {
         window.history.back();
     }
@@ -170,7 +169,51 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div className="graph"></div>
+            <div className="graph">
+                <span style={{
+                    position: 'relative',
+                    marginLeft: '39%',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontWeight: 800,
+                    fontSize: 20,
+                    color: "cornflowerblue"
+                }}>Daily steps</span>
+                <div className={"circle"}>
+                    <div className={"circleWrap"}>
+                        <CircularProgress
+                            style={
+                                {
+                                    boxShadow: '-10px -10px 15px powderblue, 10px 10px 15px powderblue',
+                                    borderRadius: '50%',
+                                    border: '0.1px solid white',
+                                    outline: 'none',
+                                    display: 'flex',
+                                    cursor: 'pointer'
+                                }
+                            }
+                            variant="determinate"
+                            value={progress}
+                            size={170}
+                            thickness={3}>
+                        </CircularProgress>
+                        <Typography
+                            variant="h6"
+                            component="div"
+                            style={{
+                                position: 'absolute',
+                                fontSize: 30,
+                                fontFamily: 'Montserrat, sans-serif',
+                                color: "mediumblue",
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                            }}
+                        >
+                            {stepCount}
+                        </Typography>
+                    </div>
+                </div>
+            </div>
             <div className="shed"></div>
             <div className="back-button" onClick={() => navigate("/")}>
                 <a>Back</a>
