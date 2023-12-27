@@ -7,7 +7,7 @@
     border-radius: 50%;
     text-align: center;
     left: 14px;
-    top: 190px;
+    top: 220px;
     color: white;
 }
 
@@ -22,8 +22,7 @@
     transition: all 0.2s ease;
     cursor: pointer;
     margin-left: 104px;
-    margin-top: 40px;
-    top: 190px;
+    margin-top: 22px;
     font-size: 2vw;
     line-height: 2vw;
     width: 150px;

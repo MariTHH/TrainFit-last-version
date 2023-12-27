@@ -7,7 +7,7 @@ import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
-import { CircularProgress } from '@mui/material'
+import {CircularProgress, Typography} from '@mui/material'
 
 function Profile() {
     const navigate = useNavigate();
@@ -34,6 +34,7 @@ function Profile() {
     }
 
     React.useEffect(() => {
+        handleButtonClick();
             var Item = localStorage.getItem("sex");
             if (Item !== undefined && document.getElementById(Item) !== null) {
                 document.getElementById(Item).checked = true;
@@ -76,7 +77,6 @@ function Profile() {
     }
 
     const supabase = useSupabaseClient(); // talk to supabase!
-    const {isLoading} = useSessionContext();
 
     async function googleFitSignIn() {
         const {error} = await supabase.auth.signInWithOAuth({
@@ -92,7 +92,6 @@ function Profile() {
     }
 
     const session = useSession();
-    let steps;
     async function getStepCountFromGoogleFit() {
         try {
             const now = new Date();
@@ -134,6 +133,8 @@ function Profile() {
         }
     }
     const [stepCount, setStepCount] = useState(null);
+    let steps;
+    const progress = (stepCount / 10000) * 100;
     const handleButtonClick = async () => {
         try {
             const steps = await getStepCountFromGoogleFit(session);
