@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import 'profile/style.css';
 import store from "../store";
 import localStorage from "mobx-localstorage";
-import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
+import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
 import {CircularProgress, Typography} from '@mui/material'
 
 function Profile() {
@@ -34,7 +34,7 @@ function Profile() {
     }
 
     React.useEffect(() => {
-        handleButtonClick();
+            handleButtonClick();
             var Item = localStorage.getItem("sex");
             if (Item !== undefined && document.getElementById(Item) !== null) {
                 document.getElementById(Item).checked = true;
@@ -92,6 +92,7 @@ function Profile() {
     }
 
     const session = useSession();
+
     async function getStepCountFromGoogleFit() {
         try {
             const now = new Date();
@@ -122,8 +123,8 @@ function Profile() {
             }).then((data) => {
                 return data.json();
             }).then((data) => {
-                steps = data.bucket[0].dataset[0].point[0].value[0].intVal;
-                console.log(steps)
+                    steps = data.bucket[0].dataset[0].point[0].value[0].intVal;
+                    console.log(steps)
                 }
             )
             return steps
@@ -132,6 +133,7 @@ function Profile() {
             console.error('Error fetching step count from Google Fit:', error);
         }
     }
+
     const [stepCount, setStepCount] = useState(null);
     let steps;
     const progress = (stepCount / 10000) * 100;

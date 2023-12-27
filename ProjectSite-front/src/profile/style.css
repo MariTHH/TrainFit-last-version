@@ -180,3 +180,14 @@ input[type=radio] {
     cursor: pointer;
     text-align: center;
 }
+.circle{
+    position: relative;
+    top: 45%;
+    color:cornflowerblue
+}
+.circleWrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
