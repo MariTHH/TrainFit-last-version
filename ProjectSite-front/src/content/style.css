@@ -79,8 +79,8 @@ img {
 }
 .signIn{
     position: absolute;
-    left: 60%;
-    top:190px;
+    left: 45%;
+    top:490px;
     transform: translateX(-50%);
     justify-content: center;
     flex-direction: row;

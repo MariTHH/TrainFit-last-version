@@ -27,9 +27,12 @@ function Profile() {
         };
     }, []);
 
-    function viewDiv(id) {
+    function viewDiv(id,id2) {
         view();
         document.getElementById(id).style.display = "block";
+        if(id2!==null){
+            document.getElementById(id2).style.display = "block";
+        }
     }
 
     React.useEffect(() => {
@@ -43,11 +46,12 @@ function Profile() {
 
     function view() {
         document.getElementById("profileBox").style.display = "none";
-        document.getElementById("scheduleBox").style.display = "none";
+        document.getElementById("graph").style.display = "none";
+        document.getElementById("shed").style.display = "none";
     }
 
-    const handleMouseClick = (id) => {
-        viewDiv(id)
+    const handleMouseClick = (id,id2) => {
+        viewDiv(id,id2)
     }
     const dropThis = () => {
         view()
@@ -158,18 +162,18 @@ function Profile() {
                     <img className="user-info-avatar" src={img} alt="avatar"/>
                 </div>
                 <div className="list">
-                    <div className="profile" onClick={() => handleMouseClick('profileBox')}>
+                    <div className="profile" onClick={() => {handleMouseClick('profileBox', null); }}>
                         <a>Profile</a>
                     </div>
                     <div className="schedule" onClick={() => navigate('/schedule')}>
                         <a>Schedule</a>
                     </div>
-                    <div className="progress" onClick={() => dropThis()}>
+                    <div className="progress" onClick={() => {handleMouseClick('shed','graph');}}>
                         <a>Progress</a>
                     </div>
                 </div>
             </div>
-            <div className="graph">
+            <div className="graph" id="graph">
                 <span style={{
                     position: 'relative',
                     marginLeft: '39%',
@@ -214,7 +218,15 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div className="shed"></div>
+            <div className="shed" id="shed">
+                <span style={{
+                    marginLeft: '35%',
+                    fontFamily: 'Montserrat, sans-serif',
+                    fontWeight: 800,
+                    fontSize: 20,
+                    color: "cornflowerblue"
+                }}>Daily schedule</span>
+            </div>
             <div className="back-button" onClick={() => navigate("/")}>
                 <a>Back</a>
             </div>
@@ -239,19 +251,17 @@ function Profile() {
                 <div className="save" onClick={sendParams}>
                     <a>Save</a>
                 </div>
+                {session ?
+                    <>
+                        <div className="signIn">{session.user.email}</div>
+                    </>
+                    :
+                    <>
+                        <div className="signIn" onClick={() => googleFitSignIn()}>Sign In With Google</div>
+                    </>
+                }
 
             </div>
-            <div className="scheduleBox" id={"scheduleBox"}>
-            </div>
-            {session ?
-                <>
-                    <div className="signIn">{session.user.email}</div>
-                </>
-                :
-                <>
-                    <div className="signIn" onClick={() => googleFitSignIn()}>Sign In With Google</div>
-                </>
-            }
 
         </AppContainer>
     );
