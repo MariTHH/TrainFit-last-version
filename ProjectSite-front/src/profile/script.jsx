@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppContainer from "../components/appContainer/script";
 import img from "../profile/img.png";
 import {useNavigate} from "react-router-dom";
@@ -9,17 +9,13 @@ import localStorage from "mobx-localstorage";
 import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
 import {CircularProgress, Typography} from '@mui/material'
 import {
-    EventItemButton,
     ScaleCellEventWrapper,
     ScaleCellTimeWrapper,
     ScaleCellWrapper,
     ScaleWrapper
 } from "../schedule/containers/StyledComponents";
 import moment from "moment";
-import {ButtonWrapper} from "../schedule/App/script";
-import {DayShowComponent} from "../schedule/DayShowComponent";
 import {ITEMS_PER_DAY} from "../schedule/helpers/constants";
-import {isDayContainCurrentTimestamp} from "../schedule/helpers";
 
 function Profile() {
     const navigate = useNavigate();
@@ -120,6 +116,7 @@ function Profile() {
     }
 
     const session = useSession();
+
     async function getStepCountFromGoogleFit() {
         try {
             const now = new Date();
@@ -127,7 +124,6 @@ function Profile() {
             const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
             const startOfDayUnix = startOfDay.getTime();
             const endOfDayUnix = endOfDay.getTime();
-
 
 
             const requestBody = {
@@ -154,18 +150,13 @@ function Profile() {
                     console.log(steps)
                 }
             )
-            await fetch(`${url}/events?date_gte=${startOfDay.getTime() / 1000}&date_lte=${endOfDay.getTime() / 1000}&login=${currLogin}`)
-                .then(res => res.json())
-                .then(res => {
-                    setEvents(res)
-                })
             return steps
 
         } catch (error) {
             console.error('Error fetching step count from Google Fit:', error);
         }
     }
-    const currLogin = localStorage.getItem('login');
+
     const [stepCount, setStepCount] = useState(null);
     let steps;
     const progress = (stepCount / 10000) * 100;
@@ -177,6 +168,24 @@ function Profile() {
             console.error(error);
         }
     };
+
+    async function signOut() {
+        await supabase.auth.signOut();
+    }
+
+    const [today, setToday] = useState(moment())
+    useEffect(() => {
+        const currLogin = localStorage.getItem('login');
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        fetch(`${url}/events?date_gte=${startOfDay.getTime() / 1000}&date_lte=${endOfDay.getTime() / 1000}&login=${currLogin}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                setEvents(res);
+            })
+    }, [today])
 
     return (
         <AppContainer>
@@ -258,13 +267,6 @@ function Profile() {
                     fontSize: 20,
                     color: "cornflowerblue",
                 }}>Daily schedule</span>
-
-                {/*{events.map(event => (<div className={"exercises"}>*/}
-                {/*        {event.title}{" "}*/}
-                {/*        {event.exercise}*/}
-                {/*    </div>*/}
-
-                {/*))}*/}
                 <ScaleWrapper>
                     {
                         cells.map((events, i) => (
@@ -280,7 +282,7 @@ function Profile() {
                                 </ScaleCellTimeWrapper>
 
                                 <ScaleCellEventWrapper>
-                                    <div className={"trash"}>
+                                    <div className={"listExercise"}>
                                         {
                                             events.map(event => (
 
@@ -320,18 +322,19 @@ function Profile() {
                         <span> Male </span>
                     </label>
                 </div>
-                <div className="save" onClick={sendParams}>
-                    <a>Save</a>
-                </div>
                 {session ?
                     <>
                         <div className="signIn">{session.user.email}</div>
+                        <div className="signIn" onClick={() => signOut()}>Sign Out</div>
                     </>
                     :
                     <>
                         <div className="signIn" onClick={() => googleFitSignIn()}>Sign In With Google</div>
                     </>
                 }
+                <div className="save" onClick={sendParams}>
+                    <a>Save</a>
+                </div>
 
             </div>
 

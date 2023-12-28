@@ -127,9 +127,7 @@
     font-family: 'Comfortaa', cursive;
     font-weight: 300;
     flex-direction: row;
-    top: 100px;
-    left: 100px;
-    margin: 70px 0px 70px 139px;
+    margin: 70px 0px 70px 100px;
     display: flex;
     align-items: center;
     padding: 8px;
@@ -207,7 +205,7 @@ input[type=radio] {
     transition: all 0.2s ease;
     transform: translate(0, -3px);
 }
-.trash{
+.listExercise{
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;

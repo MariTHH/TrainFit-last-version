@@ -78,19 +78,12 @@ img {
     }
 }
 .signIn{
-    position: absolute;
-    left: 45%;
-    top:490px;
-    transform: translateX(-50%);
     justify-content: center;
-    flex-direction: row;
-    align-items: center;
     padding: 6px;
-    /*margin-bottom: 5px;*/
-    /*transition: all 0.2s ease;*/
     cursor: pointer;
-    /*margin-top: 345px;*/
-    /*margin-left: 490px;*/
+    margin-right: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
     font-size: 1.2vw;
     line-height: 1.5vw;
     transition-duration: 0.4s;
@@ -101,6 +94,5 @@ img {
     text-decoration: none;
     border-radius: 10px;
     display: inline-flex;
-    justify-content: center;
     box-shadow: 0px 1px 25px 0px lightskyblue;
 }
