@@ -3,7 +3,7 @@ import {CalendarGridHeader} from "../CalendarGridHeader";
 import {MonthDaysList} from "../MonthDaysList";
 import {GridWrapper} from "../containers/StyledComponents";
 
-const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler, setDisplayMode}) => {
+const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler, setDisplayMode, setDayItem}) => {
 
     return (
         <>
@@ -12,7 +12,7 @@ const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler, setD
             </GridWrapper>
             <GridWrapper>
                 <MonthDaysList totalDays={totalDays} openFormHandler={openFormHandler} events={events}
-                               startDay={startDay} today={today} setDisplayMode={setDisplayMode}/>
+                               startDay={startDay} today={today} setDisplayMode={setDisplayMode} setDayItem={setDayItem}/>
 
             </GridWrapper>
         </>

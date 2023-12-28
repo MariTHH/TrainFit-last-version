@@ -30,14 +30,14 @@ const ButtonsCenterWrapper = styled(ButtonsWrapper)`
 `;
 
 
-const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode}) => {
+const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode, dayItem}) => {
     return (
         <DivWrapper>
             <div>
                 {
                     displayMode === DISPLAY_MODE_DAY ? (
                         <TextWrapper>
-                            {today.format("DD")}
+                            {dayItem.format("DD")}
                         </TextWrapper>
                     ) : null
                 }

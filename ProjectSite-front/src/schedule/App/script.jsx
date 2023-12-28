@@ -19,7 +19,6 @@ import {
     ShadowWrapper, TextWrapper, TextWrapperSignIn
 } from "../containers/StyledComponents";
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
-import DateTimePicker from 'react-datetime-picker';
 
 export const ButtonsWrapper = styled('div')`
   padding: 8px 14px;
@@ -51,7 +50,8 @@ const defaultEvent = {
 
 
 function Schedule() {
-    const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
+    const [displayMode,setDisplayMode] = useState(DISPLAY_MODE_MONTH);
+    const [dayItem, setDayItem] = useState(null);
     const navigate = useNavigate();
     moment.updateLocale('en', {week: {dow: 1}})
     // const today = moment();
@@ -198,8 +198,6 @@ function Schedule() {
             console.log(data);
         });
     }
-
-
     return (
         <>
             {session ?
@@ -258,11 +256,12 @@ function Schedule() {
                              nextHandler={nextHandler}
                              setDisplayMode={setDisplayMode}
                              displayMode={displayMode}
+                             dayItem={dayItem}
                     />
                     {
                         displayMode === DISPLAY_MODE_MONTH ? (
                             <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}
-                                          openFormHandler={openModalFormHandler} setDisplayMode={setDisplayMode}/>
+                                          openFormHandler={openModalFormHandler} setDisplayMode={setDisplayMode} setDayItem={setDayItem}/>
                         ) : null
                     }
                     {
@@ -273,7 +272,7 @@ function Schedule() {
                                               eventFetchHandler={eventFetchHandler}
                                               method={method}
                                               removeEventHandler={removeEventHandler}
-                                              openFormHandler={openFormHandler}/>
+                                              openFormHandler={openFormHandler} dayItem={dayItem}/>
                         ) : null
                     }
                 </ShadowWrapper>

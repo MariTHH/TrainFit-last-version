@@ -25,11 +25,10 @@ const EventItemWrapper = styled('button')`
     border: unset;
     color: #000000;
     cursor: pointer;
-    
     background-color: lightblue;
     border-radius: 2px;
 `;
-export const CalendarCell = ({dayItem, today, openFormHandler, events, setDisplayMode}) => {
+export const CalendarCell = ({dayItem, today, openFormHandler, events, setDisplayMode, setDayItem}) => {
     return (
         <CellWrapper
             isWeekday={dayItem.day() === 6 || dayItem.day() === 0} // выходные другого цвета
@@ -45,6 +44,8 @@ export const CalendarCell = ({dayItem, today, openFormHandler, events, setDispla
                             <div key={"Show day"}>
                                 <EventItemWrapperButton onClick={() => {
                                     setDisplayMode(DISPLAY_MODE_DAY);
+                                    setDayItem(dayItem);
+                                    console.log(dayItem)
                                 }}>
                                     show day
                                 </EventItemWrapperButton>

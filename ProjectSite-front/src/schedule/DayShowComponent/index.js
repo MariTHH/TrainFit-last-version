@@ -49,9 +49,9 @@ export const DayShowComponent = ({
                                      eventFetchHandler,
                                      method,
                                      removeEventHandler,
-                                     openFormHandler
+                                     openFormHandler, dayItem
                                  }) => {
-    const eventList = events.filter(event => isDayContainCurrentEvent(event, today))
+    const eventList = events.filter(event => isDayContainCurrentEvent(event, dayItem))
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [exercisesPicker, setExercisesPicker] = useState(false);
     const array1 = ["press", "running", "planka", "otjimanie"];
