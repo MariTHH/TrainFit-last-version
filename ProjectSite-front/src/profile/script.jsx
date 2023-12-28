@@ -8,11 +8,25 @@ import store from "../store";
 import localStorage from "mobx-localstorage";
 import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
 import {CircularProgress, Typography} from '@mui/material'
+import {
+    EventItemButton,
+    ScaleCellEventWrapper,
+    ScaleCellTimeWrapper,
+    ScaleCellWrapper,
+    ScaleWrapper
+} from "../schedule/containers/StyledComponents";
+import moment from "moment";
+import {ButtonWrapper} from "../schedule/App/script";
+import {DayShowComponent} from "../schedule/DayShowComponent";
+import {ITEMS_PER_DAY} from "../schedule/helpers/constants";
+import {isDayContainCurrentTimestamp} from "../schedule/helpers";
 
 function Profile() {
     const navigate = useNavigate();
     let [username, setUsername] = useState(localStorage.getItem("login"));
     const [weight, setWeight] = useState(localStorage.getItem("weight"));
+
+    const [events, setEvents] = useState([]);
     const [sex, setSex] = useState(localStorage.getItem("sex"));
     store.setLogin(localStorage.getItem("login"));
     store.setWeight(localStorage.getItem("weight"));
@@ -27,10 +41,10 @@ function Profile() {
         };
     }, []);
 
-    function viewDiv(id,id2) {
+    function viewDiv(id, id2) {
         view();
         document.getElementById(id).style.display = "block";
-        if(id2!==null){
+        if (id2 !== null) {
             document.getElementById(id2).style.display = "block";
         }
     }
@@ -43,6 +57,15 @@ function Profile() {
             }
         }
     )
+    React.useEffect(()=>{
+        const currLogin = localStorage.getItem('login');
+        fetch(`${url}/events?date_gte=${startOfDay.getTime() / 1000}&date_lte=${endOfDay.getTime() / 1000}&login=${currLogin}`)
+            .then(res => res.json())
+            .then(res => {
+                 setEvents(res);
+
+            })
+    })
 
     function view() {
         document.getElementById("profileBox").style.display = "none";
@@ -50,8 +73,8 @@ function Profile() {
         document.getElementById("shed").style.display = "none";
     }
 
-    const handleMouseClick = (id,id2) => {
-        viewDiv(id,id2)
+    const handleMouseClick = (id, id2) => {
+        viewDiv(id, id2)
     }
     const dropThis = () => {
         view()
@@ -103,7 +126,7 @@ function Profile() {
             const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
             const startOfDayUnix = startOfDay.getTime();
             const endOfDayUnix = endOfDay.getTime();
-            console.log(endOfDayUnix)
+
 
 
             const requestBody = {
@@ -162,13 +185,17 @@ function Profile() {
                     <img className="user-info-avatar" src={img} alt="avatar"/>
                 </div>
                 <div className="list">
-                    <div className="profile" onClick={() => {handleMouseClick('profileBox', null); }}>
+                    <div className="profile" onClick={() => {
+                        handleMouseClick('profileBox', null);
+                    }}>
                         <a>Profile</a>
                     </div>
                     <div className="schedule" onClick={() => navigate('/schedule')}>
                         <a>Schedule</a>
                     </div>
-                    <div className="progress" onClick={() => {handleMouseClick('shed','graph');}}>
+                    <div className="progress" onClick={() => {
+                        handleMouseClick('shed', 'graph');
+                    }}>
                         <a>Progress</a>
                     </div>
                 </div>
@@ -224,8 +251,48 @@ function Profile() {
                     fontFamily: 'Montserrat, sans-serif',
                     fontWeight: 800,
                     fontSize: 20,
-                    color: "cornflowerblue"
+                    color: "cornflowerblue",
                 }}>Daily schedule</span>
+
+                {/*{events.map(event => (<div className={"exercises"}>*/}
+                {/*        {event.title}{" "}*/}
+                {/*        {event.exercise}*/}
+                {/*    </div>*/}
+
+                {/*))}*/}
+                <ScaleWrapper>
+                    {
+                        cells.map((events, i) => (
+                            <ScaleCellWrapper>
+                                <ScaleCellTimeWrapper>
+                                    {
+                                        i ? (
+                                            <>
+                                                {`${i}`.padStart(2, `0`)}:00
+                                            </>
+                                        ) : null
+                                    }
+                                </ScaleCellTimeWrapper>
+
+                                <ScaleCellEventWrapper>
+                                    <div className={"trash"}>
+                                        {
+                                            events.map(event => (
+
+                                                <div className={"exercises"}>
+                                                    {event.title} {" "}
+                                                    {event.exercise}
+                                                </div>
+
+                                            ))
+                                        }
+                                    </div>
+                                </ScaleCellEventWrapper>
+
+                            </ScaleCellWrapper>
+                        ))
+                    }
+                </ScaleWrapper>
             </div>
             <div className="back-button" onClick={() => navigate("/")}>
                 <a>Back</a>
