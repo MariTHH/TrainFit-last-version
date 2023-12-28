@@ -58,28 +58,16 @@ function Profile() {
         }
     }
 
-    const now = new Date();
     const url = 'http://localhost:3001';
-    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
     React.useEffect(() => {
             handleButtonClick();
             var Item = localStorage.getItem("sex");
             if (Item !== undefined && document.getElementById(Item) !== null) {
                 document.getElementById(Item).checked = true;
             }
-
         }
     )
-    React.useEffect(()=>{
-        const currLogin = localStorage.getItem('login');
-        fetch(`${url}/events?date_gte=${startOfDay.getTime() / 1000}&date_lte=${endOfDay.getTime() / 1000}&login=${currLogin}`)
-            .then(res => res.json())
-            .then(res => {
-                 setEvents(res);
 
-            })
-    })
 
     function view() {
         document.getElementById("profileBox").style.display = "none";
@@ -132,7 +120,6 @@ function Profile() {
     }
 
     const session = useSession();
-
     async function getStepCountFromGoogleFit() {
         try {
             const now = new Date();
@@ -167,13 +154,18 @@ function Profile() {
                     console.log(steps)
                 }
             )
+            await fetch(`${url}/events?date_gte=${startOfDay.getTime() / 1000}&date_lte=${endOfDay.getTime() / 1000}&login=${currLogin}`)
+                .then(res => res.json())
+                .then(res => {
+                    setEvents(res)
+                })
             return steps
 
         } catch (error) {
             console.error('Error fetching step count from Google Fit:', error);
         }
     }
-
+    const currLogin = localStorage.getItem('login');
     const [stepCount, setStepCount] = useState(null);
     let steps;
     const progress = (stepCount / 10000) * 100;
@@ -185,7 +177,6 @@ function Profile() {
             console.error(error);
         }
     };
-
 
     return (
         <AppContainer>
