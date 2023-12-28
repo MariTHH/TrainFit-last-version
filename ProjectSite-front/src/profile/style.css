@@ -90,6 +90,7 @@
 
 #shed {
     width: 450px;
+    overflow-y: scroll;
     height: 350px;
     border: 3px solid cornflowerblue;
     border-radius: 10%;
@@ -189,4 +190,27 @@ input[type=radio] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
+}
+.exercises{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    min-width: 50px;
+    width: unset;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    background: cornflowerblue;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    transform: translate(0, -3px);
+}
+.trash{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

@@ -34,6 +34,15 @@ function Profile() {
     const goBack = () => {
         window.history.back();
     }
+    const cells = [...new Array(ITEMS_PER_DAY)].map((_, i) => {
+        const temp = [];
+        events.forEach(event => {
+            if (+moment.unix(+event.date).format('H') === i) {
+                temp.push(event);
+            }
+        })
+        return temp;
+    })
     React.useEffect(() => {
         window.history.pushState(null, null, window.location.href);
         window.onpopstate = () => {
@@ -49,12 +58,17 @@ function Profile() {
         }
     }
 
+    const now = new Date();
+    const url = 'http://localhost:3001';
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
     React.useEffect(() => {
             handleButtonClick();
             var Item = localStorage.getItem("sex");
             if (Item !== undefined && document.getElementById(Item) !== null) {
                 document.getElementById(Item).checked = true;
             }
+
         }
     )
     React.useEffect(()=>{
