@@ -30,14 +30,16 @@ const ButtonsCenterWrapper = styled(ButtonsWrapper)`
 `;
 
 
-const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode, dayItem}) => {
+const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode, dayItem, setDayItem}) => {
     return (
         <DivWrapper>
             <div>
                 {
                     displayMode === DISPLAY_MODE_DAY ? (
                         <TextWrapper>
-                            {dayItem.format("DD")}
+                            {
+                                dayItem.format("DD")
+                            }
                         </TextWrapper>
                     ) : null
                 }
@@ -52,7 +54,7 @@ const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode,
                 <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_MONTH}
                                onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}>Month</ButtonWrapper>
                 <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_DAY}
-                               onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}>Day</ButtonWrapper>
+                               onClick={() => {setDisplayMode(DISPLAY_MODE_DAY);setDayItem(today)}}>Day</ButtonWrapper>
             </ButtonsCenterWrapper>
             <ButtonsWrapper>
                 <ButtonWrapper onClick={prevHandler}> &lt; </ButtonWrapper>

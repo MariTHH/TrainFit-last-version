@@ -44,7 +44,8 @@ const defaultEvent = {
     description: '',
     login: localStorage.getItem("login"),
     date: moment().format('X'),
-    exercise: "Exercise"
+    exercise: "Exercise",
+    googleId : null
 
 }
 
@@ -257,6 +258,8 @@ function Schedule() {
                              setDisplayMode={setDisplayMode}
                              displayMode={displayMode}
                              dayItem={dayItem}
+                             setDayItem={setDayItem}
+
                     />
                     {
                         displayMode === DISPLAY_MODE_MONTH ? (
