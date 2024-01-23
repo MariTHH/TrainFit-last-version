@@ -45,13 +45,13 @@ const defaultEvent = {
     login: localStorage.getItem("login"),
     date: moment().format('X'),
     exercise: "Exercise",
-    googleId : null
+    googleId: null
 
 }
 
 
 function Schedule() {
-    const [displayMode,setDisplayMode] = useState(DISPLAY_MODE_MONTH);
+    const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
     const [dayItem, setDayItem] = useState(null);
     const navigate = useNavigate();
     moment.updateLocale('en', {week: {dow: 1}})
@@ -117,10 +117,11 @@ function Schedule() {
             })
 
     }
+    let idGoogle
     const eventFetchHandler = () => {
         const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
-        if (method === 'Create') {
+        if(method==='Create'){
             createCalendarEvent(event.exercise, event.description, event.date);
         }
         fetch(fetchUrl, {
@@ -137,9 +138,11 @@ function Schedule() {
                     setEvents(prevState => prevState.map(eventEl => eventEl.id === res.id ? res : eventEl))
                 } else {
                     setEvents(prevState => [...prevState, res]);
+
                 }
                 cancelButtonHandler()
             })
+
 
     }
     const [exercisesPicker, setExercisesPicker] = useState(false);
@@ -173,11 +176,12 @@ function Schedule() {
         await supabase.auth.signOut();
     }
 
+    let a;
+
     async function createCalendarEvent(eventName, eventDescription, eventDate) {
         const date = new Date(eventDate * 1000);
         const dateString = date.toISOString();
-        console.log(dateString);
-        const event = {
+        const event1 = {
             'summary': eventName,
             'description': eventDescription,
             'start': {
@@ -192,13 +196,15 @@ function Schedule() {
             headers: {
                 'Authorization': 'Bearer ' + session.provider_token // Access token for google
             },
-            body: JSON.stringify(event)
+            body: JSON.stringify(event1)
         }).then((data) => {
             return data.json();
         }).then((data) => {
-            console.log(data);
+            a = data.id;
         });
+        return a;
     }
+
     return (
         <>
             {session ?
@@ -264,7 +270,8 @@ function Schedule() {
                     {
                         displayMode === DISPLAY_MODE_MONTH ? (
                             <CalendarGrid startDay={startDay} today={today} totalDays={totalDays} events={events}
-                                          openFormHandler={openModalFormHandler} setDisplayMode={setDisplayMode} setDayItem={setDayItem}/>
+                                          openFormHandler={openModalFormHandler} setDisplayMode={setDisplayMode}
+                                          setDayItem={setDayItem}/>
                         ) : null
                     }
                     {
