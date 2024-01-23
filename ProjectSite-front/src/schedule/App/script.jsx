@@ -122,7 +122,10 @@ function Schedule() {
         const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
         if(method==='Create'){
-            createCalendarEvent(event.exercise, event.description, event.date);
+            idGoogle = createCalendarEvent(event.exercise, event.description, event.date);
+            idGoogle.then(data => {
+                console.log(data)
+            })
         }
         fetch(fetchUrl, {
                 method: httpMethod,
