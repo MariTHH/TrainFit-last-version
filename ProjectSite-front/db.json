@@ -9,68 +9,31 @@
       "date": 1701493779
     },
     {
-      "title": "a",
-      "description": "a",
-      "login": "user123",
-      "date": "1702069200",
-      "exercise": "press",
-      "id": 12
-    },
-    {
-      "title": "",
-      "description": "3",
-      "login": "user123",
-      "date": "1702501200",
-      "exercise": "otjimanie",
-      "id": 13
-    },
-    {
       "title": "",
       "description": "",
-      "login": "mama",
-      "date": "1703404800",
-      "exercise": "running",
-      "id": 14
-    },
-    {
-      "title": "",
-      "description": "le;ksldjfkjf",
-      "login": "gigachad",
-      "date": "1703538000",
+      "login": "user",
+      "date": "1706043600",
       "exercise": "plank",
-      "id": 15
+      "googleId": "hvcpbsef7cfv65qda0uoocsmig",
+      "id": 2
     },
     {
       "title": "",
       "description": "",
-      "login": "gigachad",
-      "date": "1703365200",
-      "exercise": "press",
-      "id": 16
+      "login": "user",
+      "date": "1705957200",
+      "exercise": "plank",
+      "googleId": "a5kbm970lsinul6qjvja3s2se8",
+      "id": 3
     },
     {
       "title": "",
       "description": "",
-      "login": "gigachad",
-      "date": "1703451600",
+      "login": "user",
+      "date": "1706130000",
       "exercise": "running",
-      "id": 17
-    },
-    {
-      "title": "",
-      "description": "",
-      "login": "gigachad",
-      "date": "1703624400",
-      "exercise": "push up",
-      "id": 18
-    },
-    {
-      "title": "",
-      "description": "",
-      "login": null,
-      "date": "1703710800",
-      "exercise": "running",
-      "id": 19
+      "googleId": "89uiovmtl16bkul7oe83urqhhs",
+      "id": 4
     }
   ]
 }

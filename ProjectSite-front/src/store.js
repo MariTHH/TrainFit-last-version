@@ -1,4 +1,4 @@
-import {makeAutoObservable, action, observable, autorun} from "mobx";
+import {makeAutoObservable} from "mobx";
 
 class Store {
     login;

@@ -5,7 +5,6 @@ import {Monitor} from "../Monitor";
 import moment from "moment";
 import styled from "styled-components";
 import AppSchedule from "../../components/appSchedule/script";
-import {useNavigate} from "react-router-dom";
 import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
 import {DayShowComponent} from "../DayShowComponent";
 import localStorage from "mobx-localstorage";
@@ -16,7 +15,7 @@ import {
     FormPositionWrapper,
     FormWrapper, HoursButton,
     ListOfHours,
-    ShadowWrapper, TextWrapper, TextWrapperSignIn
+    ShadowWrapper, TextWrapperSignIn
 } from "../containers/StyledComponents";
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
 
@@ -53,9 +52,7 @@ const defaultEvent = {
 function Schedule() {
     const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
     const [dayItem, setDayItem] = useState(null);
-    const navigate = useNavigate();
     moment.updateLocale('en', {week: {dow: 1}})
-    // const today = moment();
     const [today, setToday] = useState(moment())
     const startDay = today.clone().startOf(DISPLAY_MODE_MONTH).startOf('week');
     const prevHandler = () => {
@@ -111,7 +108,7 @@ function Schedule() {
             }
         )
             .then(res => res.json())
-            .then(res => {
+            .then(() => {
                 setEvents(prevState => prevState.filter(eventEl => eventEl.id !== event.id))
                 cancelButtonHandler()
             })
@@ -196,7 +193,7 @@ function Schedule() {
         await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events", {
             method: "POST",
             headers: {
-                'Authorization': 'Bearer ' + session.provider_token // Access token for google
+                'Authorization': 'Bearer ' + session.provider_token
             },
             body: JSON.stringify(event1)
         }).then((data) => {
@@ -225,7 +222,7 @@ function Schedule() {
             const response = await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events/" + eventId, {
                 method: "PUT",
                 headers: {
-                    'Authorization': 'Bearer ' + session.provider_token // Access token for google
+                    'Authorization': 'Bearer ' + session.provider_token
                 },
                 body: JSON.stringify(event)
             });
@@ -240,9 +237,9 @@ function Schedule() {
         await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events/" + eventId, {
             method: "DELETE",
             headers: {
-                'Authorization': 'Bearer ' + session.provider_token // Access token for google
+                'Authorization': 'Bearer ' + session.provider_token
             }
-        }).then((data) => {
+        }).then(() => {
             console.log('done');
         });
     }

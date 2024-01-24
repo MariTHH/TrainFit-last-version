@@ -12,7 +12,8 @@ const CalendarGrid = ({startDay, today, totalDays, events, openFormHandler, setD
             </GridWrapper>
             <GridWrapper>
                 <MonthDaysList totalDays={totalDays} openFormHandler={openFormHandler} events={events}
-                               startDay={startDay} today={today} setDisplayMode={setDisplayMode} setDayItem={setDayItem}/>
+                               startDay={startDay} today={today} setDisplayMode={setDisplayMode}
+                               setDayItem={setDayItem}/>
 
             </GridWrapper>
         </>

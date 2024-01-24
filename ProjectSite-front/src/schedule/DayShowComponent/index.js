@@ -24,6 +24,7 @@ import {
 } from "../containers/StyledComponents";
 import {ITEMS_PER_DAY} from "../helpers/constants";
 import moment from "moment";
+
 const HoursButton = styled('button')`
   border: none;
   background-color: unset;
@@ -74,12 +75,12 @@ export const DayShowComponent = ({
         setExercisesPicker(false);
         changeEventHandler(i, 'exercise');
     }
-    const getRedLinePosition = () => ((moment().format('X')-today.format('X'))/86400)*100;
+    const getRedLinePosition = () => ((moment().format('X') - today.format('X')) / 86400) * 100;
     const [, setCounter] = useState(0);
-    useEffect(() =>{
-        const timerId = setInterval(() =>{
+    useEffect(() => {
+        const timerId = setInterval(() => {
             setCounter(prevState => prevState + 1);
-        },1000);
+        }, 1000);
         return () => clearInterval(timerId);
     }, [])
 
@@ -88,8 +89,8 @@ export const DayShowComponent = ({
             <EventsListWrapper>
                 <ScaleWrapper>
                     {
-                        isDayContainCurrentTimestamp(moment().format('X'),today) ? (
-                            <RedLine position={getRedLinePosition()} />
+                        isDayContainCurrentTimestamp(moment().format('X'), today) ? (
+                            <RedLine position={getRedLinePosition()}/>
                         ) : null
                     }
                     {

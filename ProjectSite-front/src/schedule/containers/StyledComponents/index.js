@@ -13,7 +13,7 @@ export const RowInCell = styled.div`
   display: flex;
   justify-content: ${props => props.justifyContent ? props.justifyContent : 'flex-start'};
   ${props => props.pr && `padding-right: ${props.pr * 8}px`}
-  
+
 `
 export const EventListWrapper = styled('ul')`
   margin: 0;
@@ -22,28 +22,28 @@ export const EventListWrapper = styled('ul')`
 `;
 
 export const EventListItemWrapper = styled('li')`
-	padding-left: 2px;
-	padding-right: 2px;
-	margin-bottom: 2px;
-	display: flex;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-bottom: 2px;
+  display: flex;
 `;
 
 export const EventItemWrapper = styled('button')`
-	position: relative;
-	flex-grow: 1;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	width: 114px;
-	border: unset;
-	color: black;
-	cursor: pointer;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background-color: #dddddd;
-	border: 1px solid #dddddd;
-	border-radius: 2px;
+  position: relative;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 114px;
+  border: unset;
+  color: black;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: #dddddd;
+  border: 1px solid #dddddd;
+  border-radius: 2px;
 `;
 
 export const EventTitle = styled('input')`
@@ -66,7 +66,7 @@ export const EventBody = styled('textarea')`
   color: #000000;
   outline: unset;
   border-bottom: 1px solid #464648;
-  resize:none;
+  resize: none;
   height: 60px;
 `;
 
@@ -75,7 +75,7 @@ export const ButtonsWrapper = styled('div')`
   display: flex;
   justify-content: flex-end;
   outline: unset;
- 
+
 `;
 
 export const ButtonWrapper = styled('button')`
@@ -83,26 +83,29 @@ export const ButtonWrapper = styled('button')`
   border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
   border-radius: 2px;
   cursor: pointer;
-  &:not(:last-child){
+
+  &:not(:last-child) {
     margin-right: 2px;
   }
+
   justify-content: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 6px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    margin: 10px;
-    width: 80px;
-    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
-    background: lightblue;
-    transition: all 0.2s ease;
-    transform: translate(0, -3px);
-    box-shadow: 0 10px 40px 0 lightblue;
-    &:hover {
-       background: skyblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin: 10px;
+  width: 80px;
+  box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+  background: lightblue;
+  transition: all 0.2s ease;
+  transform: translate(0, -3px);
+  box-shadow: 0 10px 40px 0 lightblue;
+
+  &:hover {
+    background: skyblue;
     transition: all 0.2s ease;
     transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 skyblue;
@@ -112,18 +115,18 @@ export const Button1Wrapper = styled('button')`
   color: black;
   border: 1px solid #27282A;
   cursor: pointer;
-  height:34px;
-  margin:1px;
+  height: 34px;
+  margin: 1px;
   border-radius: 10px;
-  cursor: pointer;
   background: lightblue;
-   &:hover {
-       background: skyblue;
+
+  &:hover {
+    background: skyblue;
     transition: all 0.2s ease;
     transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 skyblue;
   }
- 
+
 
 `;
 
@@ -135,7 +138,7 @@ export const ShadowWrapper = styled('div')`
   border-right: 1px solid #B5B7B9;
   border-bottom: 2px solid #A4A5A7;
   border-radius: 8px;
-  overflow:hidden;
+  overflow: hidden;
   box-shadow: 0 0 0 1px #CACACA, 0 8px 20px 6px #D5D5D5;
   display: flex;
   flex-direction: column;
@@ -159,7 +162,7 @@ export const FormWrapper = styled(ShadowWrapper)`
   height: 132px;
   background-color: #1E1F21;
   color: #DDDDDD;
-  box-shadow:unset;
+  box-shadow: unset;
 `;
 export const ListOfHours = styled('ul')`
   list-style-type: none;
@@ -180,12 +183,12 @@ export const HoursButton = styled('button')`
 `;
 
 export const ButEx = styled('div')`
-    position: relative;
-    left: 0px;
-    top: 0px;
-    padding: 8px 14px;
-    background-color: white;
-    border-bottom: 1px solid #464648;
+  position: relative;
+  left: 0px;
+  top: 0px;
+  padding: 8px 14px;
+  background-color: white;
+  border-bottom: 1px solid #464648;
 `;
 export const DayWrapper = styled.div`
   height: 31px;
@@ -207,30 +210,30 @@ export const CurrentDay = styled('div')`
   justify-content: center;
 `
 export const ShowDayWrapper = styled('div')`
-	display: flex;
-	justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 `;
 export const EventItemWrapperButton = styled('button')`
-    float:none;
-    position: relative;
-    right:20px;
-	flex-grow: 1;
-    text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	width: 114px;
-	border: unset;
-	color: #000000;
-	cursor: pointer;
-	background-color:#dddddd;
-	border-radius: 2px;
+  float: none;
+  position: relative;
+  right: 20px;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 114px;
+  border: unset;
+  color: #000000;
+  cursor: pointer;
+  background-color: #dddddd;
+  border-radius: 2px;
 `;
 export const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 1px;
-  background-color:${props => props.isHeader ? '#FFFFFF' : '#E5E5E5'};
-  ${props => props.isHeader && 'border-bottom: 1px solid #E5E5E5'}
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          grid-gap: 1px;
+          background-color: ${props => props.isHeader ? '#FFFFFF' : '#E5E5E5'};
+          ${props => props.isHeader && 'border-bottom: 1px solid #E5E5E5'}
     `
 ;
 export const DayShowWrapper = styled('div')`
@@ -256,7 +259,7 @@ export const NoEventMsg = styled('div')`
   position: absolute;
   top: 50%;
   right: 50%;
-  transform: translate(50%,-50%);
+  transform: translate(50%, -50%);
 `;
 export const ScaleWrapper = styled('div')`
   height: 100%;
@@ -264,15 +267,17 @@ export const ScaleWrapper = styled('div')`
   flex-direction: column;
   padding: 0 4px;
   position: relative;
- 
+
 `;
 
 export const ScaleCellWrapper = styled('div')`
   flex-grow: 1;
   position: relative;
-  &:not(:last-child){
+
+  &:not(:last-child) {
     border-bottom: 1px solid #464648;
   }
+
   margin-left: 32px;
 `;
 
@@ -287,9 +292,9 @@ export const ScaleCellEventWrapper = styled('div')`
   min-height: 20px;
 `;
 export const EventItemButton = styled(EventItemWrapper)`
-    min-width: 50px;
-    width: unset;
-    margin-left: 4px;
+  min-width: 50px;
+  width: unset;
+  margin-left: 4px;
 `
 
 export const SelectEventTimeWrapper = styled('div')`
@@ -314,12 +319,12 @@ export const PositionRelative = styled('div')`
 `;
 
 export const RedLine = styled('div')`
-    background-color: red;
-    height: 1px;
-    position:absolute;
-    left:0;
-    right:0;
-    top:${props => props.position}%;
+  background-color: red;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: ${props => props.position}%;
 `
 export const DivWrapper = styled('div')`
   display: flex;
@@ -342,46 +347,46 @@ export const ButtonWrapperSignIn = styled('button')`
   color: black;
   border: 1px solid #27282A;
   cursor: pointer;
-  height:34px;
-  margin:1px;
+  height: 34px;
+  margin: 1px;
   margin-left: 655px;
   margin-top: 22px;
   border-radius: 10px;
-  cursor: pointer;
   background: lightblue;
-   &:hover {
-       background: skyblue;
+
+  &:hover {
+    background: skyblue;
     transition: all 0.2s ease;
     transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 skyblue;
   }
- 
+
 
 `;
 
 export const TextWrapperSignIn = styled('span')`
   font-size: 20px;
   color: #fefefe;
-  
+
 `;
 
 export const ButtonWrapperSignOut = styled('button')`
   color: black;
   border: 1px solid #27282A;
   cursor: pointer;
-  height:34px;
-  margin:1px;
+  height: 34px;
+  margin: 1px;
   margin-left: 360px;
   margin-top: 22px;
   border-radius: 10px;
-  cursor: pointer;
   background: lightblue;
-   &:hover {
-       background: skyblue;
+
+  &:hover {
+    background: skyblue;
     transition: all 0.2s ease;
     transform: translate(0, -3px);
     box-shadow: 0 20px 40px 0 skyblue;
   }
- 
+
 
 `;

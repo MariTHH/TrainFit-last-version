@@ -10,23 +10,24 @@ import {
 } from "../containers/StyledComponents";
 import styled from "styled-components";
 import {DISPLAY_MODE_DAY} from "../helpers/constants";
+
 const EventListWrapper = styled('ul')`
-  list-style-position:inside;
+  list-style-position: inside;
   padding-left: 4px;
 `;
 const EventItemWrapper = styled('button')`
-    position: relative;
-    right:20px;
-    flex-grow: 1;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 114px;
-    border: unset;
-    color: #000000;
-    cursor: pointer;
-    background-color: lightblue;
-    border-radius: 2px;
+  position: relative;
+  right: 20px;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 114px;
+  border: unset;
+  color: #000000;
+  cursor: pointer;
+  background-color: lightblue;
+  border-radius: 2px;
 `;
 export const CalendarCell = ({dayItem, today, openFormHandler, events, setDisplayMode, setDayItem}) => {
     return (

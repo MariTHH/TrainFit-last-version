@@ -12,7 +12,8 @@ export const MonthDaysList = ({startDay, totalDays, events, openFormHandler, tod
         daysArray.map((dayItem) => (
             <CalendarCell today={today}
                           events={events.filter(event => isDayContainCurrentEvent(event, dayItem))}
-                          openFormHandler={openFormHandler} dayItem={dayItem} setDisplayMode={setDisplayMode} setDayItem={setDayItem}/>
+                          openFormHandler={openFormHandler} dayItem={dayItem} setDisplayMode={setDisplayMode}
+                          setDayItem={setDayItem}/>
         ))
     )
 }

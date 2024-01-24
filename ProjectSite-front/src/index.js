@@ -42,7 +42,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider {...store}>
         <SessionContextProvider supabaseClient={supabase}>
-        <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
         </SessionContextProvider>
     </Provider>
 );

@@ -112,7 +112,7 @@
 
 #profileBox {
     display: none;
-    width: 1050px;/*1100*/
+    width: 1050px; /*1100*/
     height: 700px;
     border: 3px solid cornflowerblue;
     border-radius: 10%;
@@ -178,18 +178,21 @@ input[type=radio] {
     cursor: pointer;
     text-align: center;
 }
-.circle{
+
+.circle {
     position: relative;
     top: 45%;
-    color:cornflowerblue
+    color: cornflowerblue
 }
-.circleWrap{
+
+.circleWrap {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
 }
-.exercises{
+
+.exercises {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,7 +208,8 @@ input[type=radio] {
     transition: all 0.2s ease;
     transform: translate(0, -3px);
 }
-.listExercise{
+
+.listExercise {
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;

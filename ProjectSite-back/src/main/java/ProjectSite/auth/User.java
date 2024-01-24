@@ -17,7 +17,8 @@ public class User {
     private String weight;
     private String sex;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String login, String passwordHash, String weight, String sex) {
         this.login = login;
@@ -33,6 +34,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getWeight() {
         return weight;
     }
@@ -40,6 +42,7 @@ public class User {
     public void setWeight(String weight) {
         this.weight = weight;
     }
+
     public String getSex() {
         return sex;
     }
