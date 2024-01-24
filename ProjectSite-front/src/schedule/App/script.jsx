@@ -118,23 +118,24 @@ function Schedule() {
 
     }
     let idGoogle
-    const eventFetchHandler = () => {
+    const eventFetchHandler = async () => {
         const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
-        if(method==='Create'){
-            idGoogle = createCalendarEvent(event.exercise, event.description, event.date);
-            idGoogle.then(data => {
-                console.log(data)
-            })
+        if (method === 'Create') {
+            idGoogle = await createCalendarEvent(event.exercise, event.description, event.date);
+            event.googleId = idGoogle;
+            await changeEventHandler(idGoogle, 'googleId');
+        }
+        if (method==='Update'){
+            await updateGoogleCalendarEvent(event.googleId,event.exercise,event.description, event.date)
         }
         fetch(fetchUrl, {
-                method: httpMethod,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(event)
-            }
-        )
+            method: httpMethod,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(event)
+        })
             .then(res => res.json())
             .then(res => {
                 if (httpMethod === 'PATCH') {
@@ -144,10 +145,8 @@ function Schedule() {
 
                 }
                 cancelButtonHandler()
-            })
-
-
-    }
+            });
+    };
     const [exercisesPicker, setExercisesPicker] = useState(false);
     const array1 = ["press", "running", "plank", "push up"];
     const addExercise = (i) => {
@@ -207,6 +206,36 @@ function Schedule() {
         });
         return a;
     }
+
+    async function updateGoogleCalendarEvent(eventId, eventName, eventDescription, eventDate) {
+        const date = new Date(eventDate * 1000);
+        const dateString = date.toISOString();
+        console.log(dateString);
+        const event = {
+            'summary': eventName,
+            'description': eventDescription,
+            'start': {
+                'dateTime': dateString
+            },
+            'end': {
+                'dateTime': dateString
+            }
+        };
+        try {
+            const response = await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events/" + eventId, {
+                method: "PUT",
+                headers: {
+                    'Authorization': 'Bearer ' + session.provider_token // Access token for google
+                },
+                body: JSON.stringify(event)
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 
     return (
         <>
