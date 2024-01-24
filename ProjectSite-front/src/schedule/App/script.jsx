@@ -99,10 +99,10 @@ function Schedule() {
             [field]: text
         }))
     }
-    const removeEventHandler = () => {
+    const removeEventHandler = async () => {
         const fetchUrl = `${url}/events/${event.id}`;
         const httpMethod = 'DELETE';
-
+        await deleteCalendarEvent(event.googleId)
         fetch(fetchUrl, {
                 method: httpMethod,
                 headers: {
@@ -126,8 +126,8 @@ function Schedule() {
             event.googleId = idGoogle;
             await changeEventHandler(idGoogle, 'googleId');
         }
-        if (method==='Update'){
-            await updateGoogleCalendarEvent(event.googleId,event.exercise,event.description, event.date)
+        if (method === 'Update') {
+            await updateGoogleCalendarEvent(event.googleId, event.exercise, event.description, event.date)
         }
         fetch(fetchUrl, {
             method: httpMethod,
@@ -236,6 +236,16 @@ function Schedule() {
         }
     }
 
+    async function deleteCalendarEvent(eventId) {
+        await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events/" + eventId, {
+            method: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + session.provider_token // Access token for google
+            }
+        }).then((data) => {
+            console.log('done');
+        });
+    }
 
     return (
         <>
