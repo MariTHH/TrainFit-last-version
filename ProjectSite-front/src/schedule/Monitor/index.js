@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {DISPLAY_MODE_DAY, DISPLAY_MODE_MONTH} from "../helpers/constants";
 import {DivWrapper, TextWrapper, TitleWrapper} from "../containers/StyledComponents";
+import moment from "moment";
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -45,10 +46,10 @@ const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode,
                     ) : null
                 }
                 <TitleWrapper>
-                    {today.format("MMMM")}
+                    {dayItem.format("MMMM")}
                 </TitleWrapper>
                 <TextWrapper>
-                    {today.format("YYYY")}
+                    {dayItem.format("YYYY")}
                 </TextWrapper>
             </div>
             <ButtonsCenterWrapper>
@@ -57,7 +58,7 @@ const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode,
                 <ButtonWrapper unPressed={displayMode === DISPLAY_MODE_DAY}
                                onClick={() => {
                                    setDisplayMode(DISPLAY_MODE_DAY);
-                                   setDayItem(today)
+                                   setDayItem(moment())
                                }}>Day</ButtonWrapper>
             </ButtonsCenterWrapper>
             <ButtonsWrapper>

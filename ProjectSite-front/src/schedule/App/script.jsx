@@ -51,16 +51,19 @@ const defaultEvent = {
 
 function Schedule() {
     const [displayMode, setDisplayMode] = useState(DISPLAY_MODE_MONTH);
-    const [dayItem, setDayItem] = useState(null);
+    const [dayItem, setDayItem] = useState(moment());
     moment.updateLocale('en', {week: {dow: 1}})
     const [today, setToday] = useState(moment())
     const startDay = today.clone().startOf(DISPLAY_MODE_MONTH).startOf('week');
     const prevHandler = () => {
         setToday(prev => prev.clone().subtract(1, displayMode))
+        setDayItem(prev => prev.clone().subtract(1, displayMode))
     };
-    const todayHandler = () => setToday(moment())
+    const todayHandler = () => {setToday(moment())
+    setDayItem(moment())}
     const nextHandler = () => {
         setToday(prev => prev.clone().add(1, displayMode))
+        setDayItem(prev => prev.clone().add(1, displayMode))
     };
 
     const [method, setMethod] = useState(null)
@@ -99,7 +102,9 @@ function Schedule() {
     const removeEventHandler = async () => {
         const fetchUrl = `${url}/events/${event.id}`;
         const httpMethod = 'DELETE';
-        await deleteCalendarEvent(event.googleId)
+        if(session){
+            await deleteCalendarEvent(event.googleId)
+        }
         fetch(fetchUrl, {
                 method: httpMethod,
                 headers: {
@@ -118,12 +123,12 @@ function Schedule() {
     const eventFetchHandler = async () => {
         const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
         const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
-        if (method === 'Create') {
+        if (method === 'Create' && session) {
             idGoogle = await createCalendarEvent(event.exercise, event.description, event.date);
             event.googleId = idGoogle;
             await changeEventHandler(idGoogle, 'googleId');
         }
-        if (method === 'Update') {
+        if (method === 'Update' && session) {
             await updateGoogleCalendarEvent(event.googleId, event.exercise, event.description, event.date)
         }
         fetch(fetchUrl, {
