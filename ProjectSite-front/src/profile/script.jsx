@@ -124,8 +124,6 @@ function Profile() {
             const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
             const startOfDayUnix = startOfDay.getTime();
             const endOfDayUnix = endOfDay.getTime();
-
-
             const requestBody = {
                 "aggregateBy": [{
                     "dataTypeName": "com.google.step_count.delta",
