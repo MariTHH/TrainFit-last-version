@@ -59,8 +59,10 @@ function Schedule() {
         setToday(prev => prev.clone().subtract(1, displayMode))
         setDayItem(prev => prev.clone().subtract(1, displayMode))
     };
-    const todayHandler = () => {setToday(moment())
-    setDayItem(moment())}
+    const todayHandler = () => {
+        setToday(moment())
+        setDayItem(moment())
+    }
     const nextHandler = () => {
         setToday(prev => prev.clone().add(1, displayMode))
         setDayItem(prev => prev.clone().add(1, displayMode))
@@ -102,7 +104,7 @@ function Schedule() {
     const removeEventHandler = async () => {
         const fetchUrl = `${url}/events/${event.id}`;
         const httpMethod = 'DELETE';
-        if(session){
+        if (session) {
             await deleteCalendarEvent(event.googleId)
         }
         fetch(fetchUrl, {
@@ -180,12 +182,12 @@ function Schedule() {
         await supabase.auth.signOut();
     }
 
-    let a;
+    let googleID;
 
     async function createCalendarEvent(eventName, eventDescription, eventDate) {
         const date = new Date(eventDate * 1000);
         const dateString = date.toISOString();
-        const event1 = {
+        const event = {
             'summary': eventName,
             'description': eventDescription,
             'start': {
@@ -200,13 +202,13 @@ function Schedule() {
             headers: {
                 'Authorization': 'Bearer ' + session.provider_token
             },
-            body: JSON.stringify(event1)
+            body: JSON.stringify(event)
         }).then((data) => {
             return data.json();
         }).then((data) => {
-            a = data.id;
+            googleID = data.id;
         });
-        return a;
+        return googleID;
     }
 
     async function updateGoogleCalendarEvent(eventId, eventName, eventDescription, eventDate) {

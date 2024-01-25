@@ -152,6 +152,8 @@ function Profile() {
 
         } catch (error) {
             console.error('Error fetching step count from Google Fit:', error);
+            steps = 0;
+            return steps
         }
     }
 
@@ -284,7 +286,7 @@ function Profile() {
                                         {
                                             events.map(event => (
 
-                                                <div className={"exercises"}>
+                                                <div className={"exercises"} onDoubleClick={() => navigate('/schedule')}>
                                                     {event.title} {" "}
                                                     {event.exercise}
                                                 </div>

@@ -55,7 +55,7 @@ export const DayShowComponent = ({
     const eventList = events.filter(event => isDayContainCurrentEvent(event, dayItem))
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [exercisesPicker, setExercisesPicker] = useState(false);
-    const array1 = ["press", "running", "planka", "otjimanie"];
+    const exercises = ["press", "running", "plank", "push up"];
     const cells = [...new Array(ITEMS_PER_DAY)].map((_, i) => {
         const temp = [];
         eventList.forEach(event => {
@@ -155,12 +155,12 @@ export const DayShowComponent = ({
                                     {
                                         exercisesPicker ? (
                                             <ListOfEx>{
-                                                [...new Array(array1.length)].map((_, i) => (
+                                                [...new Array(exercises.length)].map((_, i) => (
                                                     <li>
                                                         <HoursButton
                                                             onClick={() => {
-                                                                addExercise(array1.at(i))
-                                                            }}>{array1.at(i)}</HoursButton>
+                                                                addExercise(exercises.at(i))
+                                                            }}>{exercises.at(i)}</HoursButton>
                                                     </li>
                                                 ))
                                             }</ListOfEx>
@@ -185,7 +185,7 @@ export const DayShowComponent = ({
                     ) : (
                         <>
                             <div>
-                                <ButtonWrapper onClick={() => openFormHandler('Create', null, today)}> Create
+                                <ButtonWrapper onClick={() => openFormHandler('Create', null, dayItem)}> Create
                                 </ButtonWrapper>
                             </div>
                             <NoEventMsg>No event selected</NoEventMsg>
