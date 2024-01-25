@@ -1,33 +1,31 @@
 .button-container {
-    right: 100px;
+    color: white;
     display: flex;
-    width: 30%;
+    font-family: 'Comfortaa', cursive;
     height: 15vh;
     margin-top: 100px;
-    color: white;
-    font-family: 'Comfortaa', cursive;
     position: absolute;
+    right: 100px;
+    width: 30%;
 }
 
 a.my-button {
-    cursor: pointer;
-    transition-duration: 0.4s;
+    align-items: center;
     background-color: cornflowerblue;
+    border-radius: 25px;
+    box-shadow: 0px 8px 25px 0px lightskyblue;
     color: white;
+    cursor: pointer;
+    display: inline-flex;
     font-family: 'Montserrat', sans-serif;
     font-size: 31px;
-    font-weight: 800;
     font-style: normal;
-    text-decoration: none;
-    padding: 7px 20px;
-    margin: 30px;
-    border-radius: 25px;
-    display: inline-flex;
+    font-weight: 800;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0px 8px 25px 0px lightskyblue;
-
-
+    margin: 30px;
+    padding: 7px 20px;
+    text-decoration: none;
+    transition-duration: 0.4s;
 }
 
 a.my-button:hover {
@@ -43,32 +41,32 @@ a.my-button:hover {
 
 .small-text {
     background: cornflowerblue;
-    margin-top: -60px;
-    right: 115px;
-    font-size: 25px;
-    font-weight: 800;
-    font-style: normal;
-    text-decoration: none;
-    padding: 7px 20px;
-    display: flex;
     color: white;
+    display: flex;
     font-family: 'Comfortaa', cursive;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 800;
+    margin-top: -60px;
+    padding: 7px 20px;
     position: absolute;
+    right: 115px;
+    text-decoration: none;
 }
 
 #login-password-form {
-    right: 160px;
-    margin-top: -20px;
+    color: white;
     display: flex;
     height: 15vh;
+    margin-top: -20px;
     padding: 50px 90px;
-    color: white;
     position: absolute;
+    right: 160px;
 }
 
 .input-text {
-    font-size: 15px;
-    font-family: 'Comfortaa', cursive;
-    font-weight: 300;
     flex-direction: column;
+    font-family: 'Comfortaa', cursive;
+    font-size: 15px;
+    font-weight: 300;
 }

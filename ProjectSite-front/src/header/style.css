@@ -1,8 +1,8 @@
 header {
+    color: #fefefe;
     font-family: 'Montserrat', sans-serif;
     font-size: xx-large;
+    margin-top: -280px;
     text-align: center;
     text-transform: uppercase;
-    color: #fefefe;
-    margin-top: -280px;
 }

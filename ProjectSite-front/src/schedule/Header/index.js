@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const DivWrapper = styled('div')`
-  background-color: #FFFFFF;
-  height: 36px;
-  display: flex;
   align-items: center;
+  background-color: #FFFFFF;
+  display: flex;
+  height: 36px;
 `;
 const Header = () => {
     return (

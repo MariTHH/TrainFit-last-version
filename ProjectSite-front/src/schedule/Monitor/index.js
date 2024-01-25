@@ -5,20 +5,19 @@ import {DivWrapper, TextWrapper, TitleWrapper} from "../containers/StyledCompone
 import moment from "moment";
 
 const ButtonsWrapper = styled('div')`
-  display: flex;
   align-items: center;
+  display: flex;
 `;
 
 const ButtonWrapper = styled('button')`
-  border: unset;
+  align-items: center;
   background-color: #FFFFFF;
-  border: 1px solid #565759;
-  height: 30px;
   border-radius: 4px;
+  border: 1px solid #565759;
   cursor: pointer;
   display: flex;
+  height: 30px;
   justify-content: center;
-  align-items: center;
 `;
 const TodayButton = styled(ButtonWrapper)`
   font-weight: bold;
@@ -26,13 +25,13 @@ const TodayButton = styled(ButtonWrapper)`
 
 const ButtonsCenterWrapper = styled(ButtonsWrapper)`
   position: absolute;
-  top: 50%;
   right: 50%;
+  top: 50%;
   transform: translate(50%, -50%);
 `;
 
 
-const Monitor = ({today, prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode, dayItem, setDayItem}) => {
+const Monitor = ({prevHandler, todayHandler, nextHandler, setDisplayMode, displayMode, dayItem, setDayItem}) => {
     return (
         <DivWrapper>
             <div>

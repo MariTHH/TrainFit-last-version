@@ -3,10 +3,6 @@ import {isDayContainCurrentEvent, isDayContainCurrentTimestamp} from "../helpers
 import styled from "styled-components"
 import {
     EventBody,
-    EventItemWrapper,
-    EventListItemWrapper,
-    EventListWrapper,
-    EventTitle,
     ButtonsWrapper,
     ButtonWrapper,
     Button1Wrapper,
@@ -26,20 +22,20 @@ import {ITEMS_PER_DAY} from "../helpers/constants";
 import moment from "moment";
 
 const HoursButton = styled('button')`
-  border: none;
   background-color: unset;
+  border: none;
   cursor: pointer;
 `;
 const ListOfHours = styled('ul')`
+  background-color: rgb(239, 239, 239);
+  color: #000;
+  height: 60px;
+  left: 2px;
   list-style-type: none;
   margin: 0;
-  padding: 0;
-  height: 60px;
   overflow-y: scroll;
-  color: #000;
+  padding: 0;
   position: absolute;
-  left: 2px;
-  background-color: rgb(239, 239, 239);
 `;
 export const DayShowComponent = ({
                                      events,

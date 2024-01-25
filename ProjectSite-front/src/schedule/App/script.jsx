@@ -20,16 +20,16 @@ import {
 import {useSession, useSessionContext, useSupabaseClient} from "@supabase/auth-helpers-react";
 
 export const ButtonsWrapper = styled('div')`
-  padding: 8px 14px;
-  display: flex;
   background-color: #FFFFFF;
+  display: flex;
   justify-content: flex-end;
+  padding: 8px 14px;
 `;
 
 export const ButtonWrapper = styled('button')`
-  color: ${props => props.danger ? '#f00' : '#272282A'};
-  border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
   border-radius: 2px;
+  border: 1px solid ${props => props.danger ? '#f00' : '#27282A'};
+  color: ${props => props.danger ? '#f00' : '#272282A'};
   cursor: pointer;
 
   &:not(:last-child) {
@@ -303,14 +303,14 @@ function Schedule() {
             <AppSchedule>
                 <ShadowWrapper>
                     <Header/>
-                    <Monitor today={today}
-                             prevHandler={prevHandler}
-                             todayHandler={todayHandler}
-                             nextHandler={nextHandler}
-                             setDisplayMode={setDisplayMode}
-                             displayMode={displayMode}
-                             dayItem={dayItem}
-                             setDayItem={setDayItem}
+                    <Monitor
+                        prevHandler={prevHandler}
+                        todayHandler={todayHandler}
+                        nextHandler={nextHandler}
+                        setDisplayMode={setDisplayMode}
+                        displayMode={displayMode}
+                        dayItem={dayItem}
+                        setDayItem={setDayItem}
 
                     />
                     {
